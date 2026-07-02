@@ -1,69 +1,38 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
-
-
 
 <head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Subscription Management</title>
 
-    <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 
-
-
-    <title>Subscription Management</title>
-
-
-
-    <link rel="stylesheet" href="C:\Users\3227076\Downloads\OneDrive_2026-07-01\Balamurugan - 3227076\styles\Admin-subcriptions.css">
-
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-
+<link rel="stylesheet" href="C:\Users\3203454\Documents\esports\styles\Admin-subcriptions.css">
 
 </head>
 
-
-
 <body>
 
-
-
-<div class="container">
-
-
-
- <!-- ========================= -->
-    <!-- SIDEBAR -->
-    <!-- ========================= -->
-
+<div class="dashboard">
     <aside class="sidebar">
 
-    <div class="logo">
+<div class="logo">
 
-        <div class="logo-icon">🎮</div>
+<div class="logo-icon">🎮</div>
 
-        <div>
+<div>
+<h2>GAMEVERSE</h2>
+<span>Admin Panel</span>
+</div>
 
-            <h2>GAMEVERSE</h2>
+</div>
 
-            <span>Admin Panel</span>
-
-        </div>
-
-    </div>
-
-   <ul class="menu">
+<ul class="menu">
 
         <li class="active">
             <!-- Change active class for each page -->
@@ -159,1092 +128,364 @@
 
     </ul>
 
-
 </aside>
-
-
-<!-- ================= Main ================= -->
-
-
-
 <main class="main-content">
-
-
-
-<!-- ================= Topbar ================= -->
-
-
 
 <header class="topbar">
 
+<div class="search-box">
 
+<i class="ri-search-line"></i>
 
-    <div class="search-box">
+<input
+type="text" id="globalSearch"
+placeholder="Search users, influencers, brands, tournaments...">
 
+</div>
 
+<div class="top-right">
 
-        <i class="fa-solid fa-search"></i>
+<button class="notification">
+<i class="ri-notification-3-line"></i>
+</button>
 
+<div class="admin-profile">
 
+<img src="https://i.pravatar.cc/100?img=12">
 
-        <input type="text" placeholder="Search users, influencers, brands, tournaments...">
+<div>
 
+<h4>Admin User</h4>
+<span>Administrator</span>
 
+</div>
 
-    </div>
+</div>
 
-
-
-    <div class="profile">
-
-
-
-        <button class="notification">
-
-
-
-            <i class="fa-solid fa-bell"></i>
-
-
-
-        </button>
-
-
-
-        <img src="https://i.pravatar.cc/40" alt="">
-
-
-
-        <div>
-
-
-
-            <h4>Admin User</h4>
-
-
-
-            <span>Administrator</span>
-
-
-
-        </div>
-
-
-
-    </div>
-
-
+</div>
 
 </header>
+<section class="page-header">
 
+<h1>Subscription Management</h1>
 
+<p>
 
-<!-- ================= Title ================= -->
+Dashboard
 
+<i class="ri-arrow-right-s-line"></i>
 
+Subscription Management
 
-<section class="page-title">
-
-
-
-    <h1>Subscription Management</h1>
-
-
-
-    <p>Dashboard / Subscription Management</p>
-
-
+</p>
 
 </section>
-
-
-
-<!-- ================= Stats ================= -->
-
-
-
 <section class="stats-grid">
 
-
-
-<div class="stat-card">
-
-
-
-    <span>Total Subscribers</span>
-
-
-
-    <h2>3,842</h2>
-
-
-
-    <p class="success">▲ 12.8% vs last month</p>
-
-
-
-</div>
-
-
-
-<div class="stat-card">
-
-
-
-    <span>Active Subscriptions</span>
-
-
-
-    <h2>3,102</h2>
-
-
-
-    <p class="success">▲ 10.4%</p>
-
-
-
-</div>
-
-
-
-<div class="stat-card">
-
-
-
-    <span>Expired / Cancelled</span>
-
-
-
-    <h2>740</h2>
-
-
-
-    <p class="danger">▼ 4.3%</p>
-
-
-
-</div>
-
-
-
-<div class="stat-card">
-
-
-
-    <span>Monthly Revenue</span>
-
-
-
-    <h2>$48,250</h2>
-
-
-
-    <p class="success">▲18.6%</p>
-
-
-
-</div>
-
-
-
-<div class="stat-card">
-
-
-
-    <span>Annual Revenue</span>
-
-
-
-    <h2>$542,340</h2>
-
-
-
-    <p class="success">▲21.2%</p>
-
-
-
-</div>
-
-
-
-<div class="stat-card">
-
-
-
-    <span>Pending Payments</span>
-
-
-
-    <h2>126</h2>
-
-
-
-    <p class="warning">Pending</p>
-
-
-
-</div>
-
-
+    <div class="stat-card">
+        <h5>Total Subscribers</h5>
+        <h2 id="totalSubscribers">0</h2>
+        <span>Registered Users</span>
+    </div>
+
+    <div class="stat-card">
+        <h5>Active Subscriptions</h5>
+        <h2 id="activeSubscriptions">0</h2>
+        <span>Currently Active</span>
+    </div>
+
+    <div class="stat-card">
+        <h5>Expired / Cancelled</h5>
+        <h2 id="expiredSubscriptions">0</h2>
+        <span>Inactive Plans</span>
+    </div>
+
+    <div class="stat-card">
+        <h5>Monthly Revenue</h5>
+        <h2 id="monthlyRevenue">$0</h2>
+        <span>Current Revenue</span>
+    </div>
+
+    <div class="stat-card">
+        <h5>Annual Revenue</h5>
+        <h2 id="annualRevenue">$0</h2>
+        <span>Total Revenue</span>
+    </div>
+
+    <div class="stat-card">
+        <h5>Pending Payments</h5>
+        <h2 id="pendingPayments">0</h2>
+        <span>Awaiting Payment</span>
+    </div>
 
 </section>
 
-
-
-<!-- ================= Main Grid ================= -->
-
-
-
-<div class="dashboard-grid">
-
-
-
-<!-- Left Content -->
-
-
+<div class="subscription-grid">
 
 <div class="left-panel">
-
-
-
-<!-- Tabs -->
-
-
-
 <div class="tabs">
+</div>
+<section class="filter-card">
 
+<div class="filter-row">
 
+<div class="table-search">
 
-<button class="active">Subscriptions</button>
+<i class="ri-search-line"></i>
 
-
-
-<button>Plans</button>
-
-
-
-<button>Payments</button>
-
-
-
-<button>Invoices</button>
-
-
-
-<button>Renewals</button>
-
-
+<input
+type="text"
+placeholder="Search by user, email or company...">
 
 </div>
 
+<div class="filters">
 
-
-<!-- Filters -->
-
-
-
-<div class="filter-bar">
-
-
-
-<input type="text" placeholder="Search subscriber">
-
-
-
-<select>
-
-
-
-<option>Role</option>
-
-
-
-<option>User</option>
-
-
-
-<option>Brand</option>
-
-
-
-<option>Influencer</option>
-
-
-
-<option>Organizer</option>
-
-
-
+    <select id="roleFilter">
+    <option value="all">All Roles</option>
+    <option value="User">User</option>
+    <option value="Influencer">Influencer</option>
+    <option value="Brand">Brand</option>
+    <option value="Tournament Organizer">
+        Tournament Organizer
+    </option>
 </select>
 
-
-
-<select>
-
-
-
-<option>Plan</option>
-
-
-
-<option>Free</option>
-
-
-
-<option>Premium</option>
-
-
-
-<option>Enterprise</option>
-
-
-
+<select id="planFilter">
+    <option value="all">All Plans</option>
+    <option value="Free">Free</option>
+    <option value="Premium">Premium</option>
+    <option value="Enterprise">Enterprise</option>
 </select>
 
-
-
-<select>
-
-
-
-<option>Status</option>
-
-
-
-<option>Active</option>
-
-
-
-<option>Expired</option>
-
-
-
-<option>Cancelled</option>
-
-
-
+<select id="statusFilter">
+    <option value="all">All Status</option>
+    <option value="Active">Active</option>
+    <option value="Past Due">Past Due</option>
+    <option value="Cancelled">Cancelled</option>
 </select>
 
-
-
-<select>
-
-
-
-<option>Billing</option>
-
-
-
-<option>Monthly</option>
-
-
-
-<option>Yearly</option>
-
-
-
+<select id="billingFilter">
+    <option value="all">All Billing</option>
+    <option value="Monthly">Monthly</option>
+    <option value="Annual">Annual</option>
 </select>
 
+   
+     
 
+    <input type="date" class="date-input">
 
-<input type="date">
+    <button id="filterBtn" class="secondary-btn">
+        <i class="ri-filter-3-line"></i>
+        Filter
+    </button>
 
+    <button id="resetBtn" class="secondary-btn">
+        Reset
+    </button>
 
-
-<button class="primary-btn">
-
-
-
-Filter
-
-
-
-</button>
-
-
-
-<button class="secondary-btn">
-
-
-
-Reset
-
-
-
-</button>
-
-
-
-</div><!-- ================= Subscription Table ================= -->
-
-
-
-<div class="table-card">
-
-
+</div>
+</section>
+<section class="table-card">
 
 <table>
 
-
-
 <thead>
-
-
 
 <tr>
 
-
-
-<th><input type="checkbox"></th>
-
-
-
+<th></th>
 <th>Subscriber</th>
-
-
-
 <th>Role</th>
-
-
-
 <th>Plan</th>
-
-
-
-<th>Billing</th>
-
-
-
+<th>Billing Cycle</th>
 <th>Amount</th>
-
-
-
 <th>Status</th>
-
-
-
 <th>Start Date</th>
-
-
-
 <th>Next Renewal</th>
-
-
-
-<th>Action</th>
-
-
+<th>Actions</th>
 
 </tr>
-
-
 
 </thead>
 
-
-
 <tbody>
 
-
-
-<tr>
-
-
-
-<td><input type="checkbox"></td>
-
-
-
-<td>
-
-<div class="user-info">
-
-<img src="https://i.pravatar.cc/40?img=1">
-
-<div>
-
-<h4>Rohit Sharma</h4>
-
-<p>rohit@email.com</p>
-
-</div>
-
-</div>
-
-</td>
-
-
-
-<td>User</td>
-
-<td>Premium</td>
-
-<td>Monthly</td>
-
-<td>$29</td>
-
-<td><span class="badge success">Active</span></td>
-
-<td>12 May 2024</td>
-
-<td>12 Jun 2024</td>
-
-<td><button class="action-btn">View</button></td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td><input type="checkbox"></td>
-
-
-
-<td>
-
-<div class="user-info">
-
-<img src="https://i.pravatar.cc/40?img=2">
-
-<div>
-
-<h4>GameX Pro</h4>
-
-<p>contact@gamex.com</p>
-
-</div>
-
-</div>
-
-</td>
-
-
-
-<td>Brand</td>
-
-<td>Enterprise</td>
-
-<td>Annual</td>
-
-<td>$499</td>
-
-<td><span class="badge success">Active</span></td>
-
-<td>01 Apr 2024</td>
-
-<td>01 Apr 2025</td>
-
-<td><button class="action-btn">View</button></td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td><input type="checkbox"></td>
-
-
-
-<td>
-
-<div class="user-info">
-
-<img src="https://i.pravatar.cc/40?img=3">
-
-<div>
-
-<h4>Play With Vock</h4>
-
-<p>gaming@gmail.com</p>
-
-</div>
-
-</div>
-
-</td>
-
-
-
-<td>Influencer</td>
-
-<td>Premium</td>
-
-<td>Monthly</td>
-
-<td>$29</td>
-
-<td><span class="badge success">Active</span></td>
-
-<td>15 May 2024</td>
-
-<td>15 Jun 2024</td>
-
-<td><button class="action-btn">View</button></td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td><input type="checkbox"></td>
-
-
-
-<td>
-
-<div class="user-info">
-
-<img src="https://i.pravatar.cc/40?img=4">
-
-<div>
-
-<h4>BGMI Esports</h4>
-
-<p>contact@bgmi.com</p>
-
-</div>
-
-</div>
-
-</td>
-
-
-
-<td>Brand</td>
-
-<td>Premium</td>
-
-<td>Monthly</td>
-
-<td>$29</td>
-
-<td><span class="badge warning">Past Due</span></td>
-
-<td>10 Apr 2024</td>
-
-<td>10 May 2024</td>
-
-<td><button class="action-btn">View</button></td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td><input type="checkbox"></td>
-
-
-
-<td>
-
-<div class="user-info">
-
-<img src="https://i.pravatar.cc/40?img=5">
-
-<div>
-
-<h4>Shadow Playz</h4>
-
-<p>shadow@email.com</p>
-
-</div>
-
-</div>
-
-</td>
-
-
-
-<td>Influencer</td>
-
-<td>Free</td>
-
-<td>-</td>
-
-<td>$0</td>
-
-<td><span class="badge success">Active</span></td>
-
-<td>-</td>
-
-<td>-</td>
-
-<td><button class="action-btn">View</button></td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td><input type="checkbox"></td>
-
-
-
-<td>
-
-<div class="user-info">
-
-<img src="https://i.pravatar.cc/40?img=6">
-
-<div>
-
-<h4>Nexa Cup</h4>
-
-<p>tournament@email.com</p>
-
-</div>
-
-</div>
-
-</td>
-
-
-
-<td>Organizer</td>
-
-<td>Premium</td>
-
-<td>Annual</td>
-
-<td>$199</td>
-
-<td><span class="badge success">Active</span></td>
-
-<td>20 Mar 2024</td>
-
-<td>20 Mar 2025</td>
-
-<td><button class="action-btn">View</button></td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td><input type="checkbox"></td>
-
-
-
-<td>
-
-<div class="user-info">
-
-<img src="https://i.pravatar.cc/40?img=7">
-
-<div>
-
-<h4>Red Bull Gaming</h4>
-
-<p>redbull@email.com</p>
-
-</div>
-
-</div>
-
-</td>
-
-
-
-<td>Brand</td>
-
-<td>Enterprise</td>
-
-<td>Annual</td>
-
-<td>$499</td>
-
-<td><span class="badge danger">Cancelled</span></td>
-
-<td>05 Jan 2024</td>
-
-<td>-</td>
-
-<td><button class="action-btn">View</button></td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td><input type="checkbox"></td>
-
-
-
-<td>
-
-<div class="user-info">
-
-<img src="https://i.pravatar.cc/40?img=8">
-
-<div>
-
-<h4>Neon Gamer</h4>
-
-<p>neon@email.com</p>
-
-</div>
-
-</div>
-
-</td>
-
-
-
-<td>Influencer</td>
-
-<td>Premium</td>
-
-<td>Monthly</td>
-
-<td>$29</td>
-
-<td><span class="badge success">Active</span></td>
-
-<td>18 May 2024</td>
-
-<td>18 Jun 2024</td>
-
-<td><button class="action-btn">View</button></td>
-
-
-
-</tr>
-
-
+<tbody id="subscriberTableBody">
 
 </tbody>
 
+<tr id="noDataRow" style="display:none;">
 
+    <td colspan="10" class="no-data">
+
+        No subscription records found.
+
+    </td>
+
+</tr>
+</tbody>
 
 </table>
 
-
-
-</div>
-
-
+</section>
 
 </div>
+<aside class="right-panel">
+<div class="panel-card">
 
-
-
-<!-- ================= Right Panel ================= -->
-
-
-
-<div class="right-panel">
-
-
-
-<div class="card">
-
-
+<div class="card-header">
 
 <h3>Subscription Plans</h3>
 
+<button class="secondary-btn">
 
+Manage Plans
 
-<div class="plan">
+</button>
+
+</div>
+
+<div class="plan-row">
 
 <span>Free</span>
-
 <strong>$0</strong>
 
 </div>
 
-
-
-<div class="plan">
+<div class="plan-row">
 
 <span>Premium</span>
-
-<strong>$29 / Month</strong>
+<strong>$29 / month</strong>
 
 </div>
 
-
-
-<div class="plan">
+<div class="plan-row">
 
 <span>Enterprise</span>
-
-<strong>$499 / Year</strong>
+<strong>$499 / year</strong>
 
 </div>
 
-
-
-<div class="plan">
+<div class="plan-row">
 
 <span>Custom</span>
-
-<strong>Contact Us</strong>
-
-</div>
-
-
+<strong>-</strong>
 
 </div>
 
-
-
-<div class="card">
-
-
-
-<h3>Revenue Overview</h3>
-
-
-
-<h2>$48,250</h2>
-
-
-
-<p class="success">▲18.6% this month</p>
-
-
-
-<div class="chart-placeholder"></div>
-
-
-
 </div>
-
-
-
-<div class="card">
-
-
+<div class="panel-card">
 
 <h3>Payment Status</h3>
 
-
-
-<div class="circle-chart"></div>
-
-
+<div class="payment-circle"></div>
 
 <div class="payment-list">
 
+<p>
 
+<span class="dot green"></span>
 
-<p><span class="dot green"></span> Successful</p>
+Successful
 
+</p>
 
+<p>
 
-<p><span class="dot red"></span> Failed</p>
+<span class="dot red"></span>
 
+Failed
 
+</p>
 
-<p><span class="dot yellow"></span> Pending</p>
+<p>
 
+<span class="dot yellow"></span>
 
+Pending
 
-<p><span class="dot blue"></span> Refunded</p>
+</p>
 
+<p>
 
+<span class="dot blue"></span>
+
+Refunded
+
+</p>
 
 </div>
 
-
-
 </div>
+<div class="panel-card">
 
-
-
-<div class="card">
-
-
+<div class="card-header">
 
 <h3>Recent Activity</h3>
 
+<a href="#">
 
+View All
+
+</a>
+
+</div>
 
 <ul class="activity-list">
 
+<li>
 
+Payment received from GameX Pro
 
-<li>✔ Payment received from GameX Pro</li>
+<span>$499</span>
 
+</li>
 
+<li>
 
-<li>✔ Subscription renewed</li>
+Subscription renewed by Play With Vock
 
+<span>$29</span>
 
+</li>
 
-<li>⚠ Payment failed from BGMI</li>
+<li>
 
+Payment failed from BGMI Esports
 
+<span>$29</span>
 
-<li>↩ Refund issued</li>
+</li>
 
+<li>
 
+Refund issued to Red Bull Gaming
 
-<li>★ New Enterprise subscription</li>
+<span>$29</span>
 
+</li>
 
+<li>
+
+New subscription by Techno Sports
+
+<span>$499</span>
+
+</li>
 
 </ul>
 
-
+</div>
+</aside>
 
 </div>
-
-
-
-</div>
-
-
-
-</div>
-
-
 
 </main>
 
-
-
 </div>
-
-
-
+<script src="script.js"></script>
 </body>
-
-
 
 </html>

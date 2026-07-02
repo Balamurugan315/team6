@@ -28,7 +28,7 @@
           rel="stylesheet">
 
     <link rel="stylesheet"
-          href="../styles/Admin-support-tickets.css">
+          href="C:\Users\3203454\Documents\esports\styles\Admin-support-tickets.css">
 
 </head>
 
@@ -165,7 +165,7 @@
 
                 <i class="ri-search-line"></i>
 
-                <input type="text"
+                <input type="text"  id="ticketSearch"
                        placeholder="Search users, influencers, brands, tournaments...">
 
             </div>
@@ -215,13 +215,6 @@
 
                 <h1>Support Tickets</h1>
 
-                <p>
-
-                    Dashboard /
-
-                    <span>Support Tickets</span>
-
-                </p>
 
             </div>
 
@@ -354,7 +347,7 @@
 
                 <label>Status</label>
 
-                <select>
+                <select id="statusFilter">
 
                     <option>All Status</option>
                     <option>Open</option>
@@ -370,7 +363,7 @@
 
                 <label>Category</label>
 
-                <select>
+               <select id="categoryFilter">
 
                     <option>All Categories</option>
                     <option>Account</option>
@@ -386,7 +379,7 @@
 
                 <label>Date</label>
 
-                <input type="date">
+                <input type="date" id="dateFilter">
 
             </div>
 
@@ -394,7 +387,7 @@
 
         <div class="filter-buttons">
 
-            <button class="primary-btn">
+            <button class="primary-btn" id="filterBtn">
 
                 <i class="ri-filter-3-line"></i>
 
@@ -402,7 +395,7 @@
 
             </button>
 
-            <button class="secondary-btn">
+            <button class="secondary-btn" id="resetBtn">
 
                 Reset
 
@@ -439,37 +432,7 @@
 
         <div class="distribution-list">
 
-            <div>
-
-                <span>Open</span>
-
-                <strong>32 (25.8%)</strong>
-
-            </div>
-
-            <div>
-
-                <span>In Progress</span>
-
-                <strong>18 (14.5%)</strong>
-
-            </div>
-
-            <div>
-
-                <span>Resolved</span>
-
-                <strong>64 (51.6%)</strong>
-
-            </div>
-
-            <div>
-
-                <span>Closed</span>
-
-                <strong>10 (8.1%)</strong>
-
-            </div>
+          
 
         </div>
 
@@ -522,160 +485,9 @@
                 </tr>
 
             </thead>
+<tbody id="ticketTableBody">
 
-            <tbody>
-
-                <tr>
-
-                    <td>#TKT-1245</td>
-
-                    <td>
-
-                        <strong>Rohit Gamer</strong><br>
-
-                        <small>rohit@email.com</small>
-
-                    </td>
-
-                    <td>Account</td>
-
-                    <td>Unable to login</td>
-
-                    <td><span class="badge success">Open</span></td>
-
-                    <td><span class="badge danger">High</span></td>
-
-                    <td>30 May 2026</td>
-
-                    <td>
-
-                        <button class="secondary-btn">View</button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>#TKT-1244</td>
-
-                    <td>
-
-                        <strong>GamerX Pro</strong><br>
-
-                        <small>gamer@email.com</small>
-
-                    </td>
-
-                    <td>Payment</td>
-
-                    <td>Payment Failed</td>
-
-                    <td><span class="badge warning">In Progress</span></td>
-
-                    <td><span class="badge warning">Medium</span></td>
-
-                    <td>30 May 2026</td>
-
-                    <td>
-
-                        <button class="secondary-btn">View</button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>#TKT-1243</td>
-
-                    <td>
-
-                        <strong>Tech Blaze</strong><br>
-
-                        <small>tech@email.com</small>
-
-                    </td>
-
-                    <td>Technical</td>
-
-                    <td>Match Not Starting</td>
-
-                    <td><span class="badge success">Open</span></td>
-
-                    <td><span class="badge danger">High</span></td>
-
-                    <td>30 May 2026</td>
-
-                    <td>
-
-                        <button class="secondary-btn">View</button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>#TKT-1242</td>
-
-                    <td>
-
-                        <strong>Aman YT</strong><br>
-
-                        <small>aman@email.com</small>
-
-                    </td>
-
-                    <td>General</td>
-
-                    <td>How to Join Tournament?</td>
-
-                    <td><span class="badge warning">In Progress</span></td>
-
-                    <td><span class="badge info">Low</span></td>
-
-                    <td>29 May 2026</td>
-
-                    <td>
-
-                        <button class="secondary-btn">View</button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>#TKT-1241</td>
-
-                    <td>
-
-                        <strong>Pro Player</strong><br>
-
-                        <small>pro@email.com</small>
-
-                    </td>
-
-                    <td>Account</td>
-
-                    <td>Change Email Address</td>
-
-                    <td><span class="badge success">Resolved</span></td>
-
-                    <td><span class="badge warning">Medium</span></td>
-
-                    <td>29 May 2026</td>
-
-                    <td>
-
-                        <button class="secondary-btn">View</button>
-
-                    </td>
-
-                </tr>
-
-            </tbody>
+</tbody>
 
         </table>
 
@@ -973,7 +785,7 @@
 
 </div>
 
-<script src="script.js"></script>
+<script src="script2.js"></script>
 
 </body>
 

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Payments Dashboard</title>
+
+    <link rel="stylesheet" href="C:\Users\3203454\Documents\esports\styles\payments.css">
+
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- SIDEBAR -->
+<!-- ========================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <h2>GAMEHUB</h2>
+
+        <span>Esports Platform</span>
+
+    </div>
+
+    <ul>
+
+        <li><a href="#">Dashboard</a></li>
+
+        <li><a href="#">Teams</a></li>
+
+        <li><a href="tounament.html">Tournament</a></li>
+
+        <li><a href="#">Influencers</a></li>
+
+        <li>
+
+            <a href="#" class="active">
+
+                Payments
+
+            </a>
+
+        </li>
+
+        <li><a href="#">Wallet</a></li>
+
+        <li><a href="#">Analytics</a></li>
+
+        <li><a href="#">Settings</a></li>
+
+    </ul>
+
+</aside>
+
+<!-- ========================= -->
+<!-- MAIN CONTENT -->
+<!-- ========================= -->
+
+<div class="main-content">
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div>
+
+            <h1>
+
+                Payment Dashboard
+
+            </h1>
+
+            <p>
+
+                Manage wallet, invoices and payments
+
+            </p>
+
+        </div>
+
+        <button class="primary-btn">
+
+            + Add Funds
+
+        </button>
+
+    </header>
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <h4>Wallet Balance</h4>
+
+            <h2>₹3,25,000</h2>
+
+            <span class="success">
+
+                Available
+
+            </span>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>Total Spent</h4>
+
+            <h2>₹24,50,000</h2>
+
+            <span>
+
+                18 Campaigns
+
+            </span>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>Pending</h4>
+
+            <h2>₹1,25,000</h2>
+
+            <span class="warning">
+
+                Awaiting Payment
+
+            </span>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>Invoices</h4>
+
+            <h2>24</h2>
+
+            <span>
+
+                Generated
+
+            </span>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h4>Overdue</h4>
+
+            <h2>₹65,000</h2>
+
+            <span class="danger">
+
+                Needs Action
+
+            </span>
+
+        </div>
+
+    </section>
+
+    <!-- CONTENT GRID -->
+
+    <div class="dashboard-grid">
+
+        <!-- LEFT SIDE -->
+
+        <div class="left-column">
+
+
+<!-- =========================
+     PAYMENT HISTORY
+========================== -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h2>Payment History</h2>
+
+            <p>Recent payment transactions</p>
+
+        </div>
+
+        <button class="secondary-btn">
+
+            Export
+
+        </button>
+
+    </div>
+
+    <div class="filter-bar">
+
+        <input
+            type="text"
+            placeholder="Search Payment ID..."
+        >
+
+        <select>
+
+            <option>All Status</option>
+            <option>Success</option>
+            <option>Pending</option>
+            <option>Failed</option>
+
+        </select>
+
+        <select>
+
+            <option>All Methods</option>
+            <option>UPI</option>
+            <option>Card</option>
+            <option>Net Banking</option>
+
+        </select>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Date</th>
+
+                <th>Amount</th>
+
+                <th>Method</th>
+
+                <th>Status</th>
+
+                <th>Invoice</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>#PAY1001</td>
+
+                <td>24 Jun 2026</td>
+
+                <td>₹1,20,000</td>
+
+                <td>UPI</td>
+
+                <td>
+
+                    <span class="status success-bg">
+
+                        Success
+
+                    </span>
+
+                </td>
+
+                <td>INV-214</td>
+
+            </tr>
+
+            <tr>
+
+                <td>#PAY1002</td>
+
+                <td>22 Jun 2026</td>
+
+                <td>₹82,000</td>
+
+                <td>Card</td>
+
+                <td>
+
+                    <span class="status warning-bg">
+
+                        Pending
+
+                    </span>
+
+                </td>
+
+                <td>INV-213</td>
+
+            </tr>
+
+            <tr>
+
+                <td>#PAY1003</td>
+
+                <td>20 Jun 2026</td>
+
+                <td>₹2,10,000</td>
+
+                <td>UPI</td>
+
+                <td>
+
+                    <span class="status success-bg">
+
+                        Success
+
+                    </span>
+
+                </td>
+
+                <td>INV-212</td>
+
+            </tr>
+
+            <tr>
+
+                <td>#PAY1004</td>
+
+                <td>18 Jun 2026</td>
+
+                <td>₹45,000</td>
+
+                <td>Bank</td>
+
+                <td>
+
+                    <span class="status failed-bg">
+
+                        Failed
+
+                    </span>
+
+                </td>
+
+                <td>INV-211</td>
+
+            </tr>
+
+            <tr>
+
+                <td>#PAY1005</td>
+
+                <td>15 Jun 2026</td>
+
+                <td>₹98,000</td>
+
+                <td>Wallet</td>
+
+                <td>
+
+                    <span class="status success-bg">
+
+                        Success
+
+                    </span>
+
+                </td>
+
+                <td>INV-210</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- =========================
+     INVOICE HISTORY
+========================== -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h2>Invoice History</h2>
+
+            <p>Recently generated invoices</p>
+
+        </div>
+
+        <button class="secondary-btn">
+
+            View All
+
+        </button>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Invoice</th>
+
+                <th>Client</th>
+
+                <th>Amount</th>
+
+                <th>Due Date</th>
+
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>INV-214</td>
+
+                <td>Valor Legends</td>
+
+                <td>₹1,20,000</td>
+
+                <td>30 Jun 2026</td>
+
+                <td>
+
+                    <span class="status success-bg">
+
+                        Paid
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>INV-213</td>
+
+                <td>PUBG League</td>
+
+                <td>₹82,000</td>
+
+                <td>28 Jun 2026</td>
+
+                <td>
+
+                    <span class="status warning-bg">
+
+                        Pending
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>INV-212</td>
+
+                <td>Free Fire Masters</td>
+
+                <td>₹2,10,000</td>
+
+                <td>25 Jun 2026</td>
+
+                <td>
+
+                    <span class="status success-bg">
+
+                        Paid
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>INV-211</td>
+
+                <td>BGMI Nationals</td>
+
+                <td>₹45,000</td>
+
+                <td>20 Jun 2026</td>
+
+                <td>
+
+                    <span class="status failed-bg">
+
+                        Overdue
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+</div>
+
+<!-- =========================
+     RIGHT COLUMN
+========================== -->
+
+<div class="right-column">
+
+<!-- Wallet Summary -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>Wallet Summary</h2>
+
+    </div>
+
+    <div class="wallet-balance">
+
+        <small>Current Balance</small>
+
+        <h1>₹3,25,000</h1>
+
+        <p>Updated Today</p>
+
+    </div>
+
+    <div class="wallet-item">
+
+        <span>Total Added</span>
+
+        <strong>₹35,00,000</strong>
+
+    </div>
+
+    <div class="wallet-item">
+
+        <span>Total Spent</span>
+
+        <strong>₹24,50,000</strong>
+
+    </div>
+
+    <div class="wallet-item">
+
+        <span>Pending</span>
+
+        <strong>₹1,25,000</strong>
+
+    </div>
+
+    <button class="primary-btn full">
+
+        Add Money
+
+    </button>
+
+</section>
+
+<!-- Payment Methods -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>Payment Methods</h2>
+
+    </div>
+
+    <div class="method">
+
+        <h4>Visa Card</h4>
+
+        <span>**** 4582</span>
+
+    </div>
+
+    <div class="method">
+
+        <h4>Google Pay</h4>
+
+        <span>UPI</span>
+
+    </div>
+
+    <div class="method">
+
+        <h4>HDFC Bank</h4>
+
+        <span>Net Banking</span>
+
+    </div>
+
+</section>
+
+<!-- Monthly Spending -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>Monthly Spending</h2>
+
+    </div>
+
+    <div class="progress-box">
+
+        <span>January</span>
+
+        <div class="progress">
+
+            <div class="fill w70"></div>
+
+        </div>
+
+    </div>
+
+    <div class="progress-box">
+
+        <span>February</span>
+
+        <div class="progress">
+
+            <div class="fill w90"></div>
+
+        </div>
+
+    </div>
+
+    <div class="progress-box">
+
+        <span>March</span>
+
+        <div class="progress">
+
+            <div class="fill w60"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Quick Actions -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>Quick Actions</h2>
+
+    </div>
+
+    <button class="primary-btn full">
+
+        Generate Invoice
+
+    </button>
+
+    <button class="secondary-btn full">
+
+        Send Payment
+
+    </button>
+
+    <button class="secondary-btn full">
+
+        Transaction History
+
+    </button>
+
+</section>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
