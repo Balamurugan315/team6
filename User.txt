@@ -1,0 +1,3813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>GameVerse | User Verification</title>
+
+    <link rel="stylesheet"
+          href="../styles/Admin-User-Verification.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+<!-- ===========================
+        SIDEBAR
+=========================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="ri-gamepad-line"></i>
+
+        <h2>GameVerse</h2>
+
+    </div>
+
+    <ul class="menu">
+
+        <li>
+
+            <a href="Admin-Dashboard.html">
+
+                <i class="ri-dashboard-line"></i>
+
+                Dashboard
+
+            </a>
+
+        </li>
+
+        <li class="active">
+
+            <a href="Admin-User-Verification.html">
+
+                <i class="ri-user-check-line"></i>
+
+                User Verification
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-Influencer-Verification.html">
+
+                <i class="ri-star-line"></i>
+
+                Influencer Verification
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-Brand-Verification.html">
+
+                <i class="ri-building-line"></i>
+
+                Brand Verification
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-Tournament.html">
+
+                <i class="ri-trophy-line"></i>
+
+                Tournament Management
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-subcriptions.html">
+
+                <i class="ri-vip-crown-line"></i>
+
+                Subscription Management
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-Report.html">
+
+                <i class="ri-file-chart-line"></i>
+
+                Reports
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-Analytics.html">
+
+                <i class="ri-line-chart-line"></i>
+
+                Analytics
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-Settings.html">
+
+                <i class="ri-settings-3-line"></i>
+
+                Settings
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-activity-logs.html">
+
+                <i class="ri-history-line"></i>
+
+                Activity Logs
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-System-logs.html">
+
+                <i class="ri-server-line"></i>
+
+                System Status
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="Admin-support-tickets.html">
+
+                <i class="ri-customer-service-2-line"></i>
+
+                Support Tickets
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="#"
+
+               id="logoutBtn">
+
+                <i class="ri-logout-box-r-line"></i>
+
+                Logout
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</aside>
+
+<!-- ===========================
+        MAIN CONTENT
+=========================== -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+    <div class="page-title">
+
+        <h1>User Verification</h1>
+
+        <p>
+
+            Verify, approve and manage registered users.
+
+        </p>
+
+    </div>
+
+    <div class="top-actions">
+
+        <div class="search-box">
+
+            <i class="ri-search-line"></i>
+
+            <input
+
+                id="searchUser"
+
+                type="search"
+
+                placeholder="Search username, email or phone">
+
+        </div>
+
+        <button
+
+            id="notificationBtn"
+
+            class="notification">
+
+            <i class="ri-notification-3-line"></i>
+
+        </button>
+
+        <button
+
+            id="mailBtn"
+
+            class="notification">
+
+            <i class="ri-mail-line"></i>
+
+        </button>
+
+        <div class="admin-profile">
+
+            <img
+
+                src="../images/admin.jpg"
+
+                alt="Admin">
+
+            <div>
+
+                <h4>Super Admin</h4>
+
+                <span>Administrator</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ===========================
+        STATISTICS
+=========================== -->
+
+<section class="stats-grid">
+
+    <div class="stat-card">
+
+        <div class="stat-icon purple">
+
+            <i class="ri-group-line"></i>
+
+        </div>
+
+        <div class="stat-content">
+
+            <h2 id="totalUsers">
+
+                0
+
+            </h2>
+
+            <p>Total Users</p>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon warning">
+
+            <i class="ri-time-line"></i>
+
+        </div>
+
+        <div class="stat-content">
+
+            <h2 id="pendingUsers">
+
+                0
+
+            </h2>
+
+            <p>Pending</p>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon success">
+
+            <i class="ri-checkbox-circle-line"></i>
+
+        </div>
+
+        <div class="stat-content">
+
+            <h2 id="approvedUsers">
+
+                0
+
+            </h2>
+
+            <p>Approved</p>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon danger">
+
+            <i class="ri-close-circle-line"></i>
+
+        </div>
+
+        <div class="stat-content">
+
+            <h2 id="rejectedUsers">
+
+                0
+
+            </h2>
+
+            <p>Rejected</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+        FILTER BAR
+=========================== -->
+
+<section class="filter-bar">
+
+    <select id="statusFilter">
+
+        <option value="All">
+
+            All Status
+
+        </option>
+
+        <option value="Pending">
+
+            Pending
+
+        </option>
+
+        <option value="Approved">
+
+            Approved
+
+        </option>
+
+        <option value="Rejected">
+
+            Rejected
+
+        </option>
+
+    </select>
+
+    <select id="roleFilter">
+
+        <option value="All">
+
+            All Roles
+
+        </option>
+
+        <option value="Player">
+
+            Player
+
+        </option>
+
+        <option value="Streamer">
+
+            Streamer
+
+        </option>
+
+        <option value="Caster">
+
+            Caster
+
+        </option>
+
+    </select>
+
+    <select id="countryFilter">
+
+        <option value="All">
+
+            All Countries
+
+        </option>
+
+    </select>
+
+    <button
+
+        class="secondary-btn"
+
+        id="resetFilters">
+
+        Reset
+
+    </button>
+
+</section>
+<!-- =====================================
+        USER VERIFICATION TABLE
+====================================== -->
+
+<section class="table-card">
+
+    <div class="table-header">
+
+        <div>
+
+            <h2>Registered Users</h2>
+
+            <p id="tableCount">
+
+                0 Users Found
+
+            </p>
+
+        </div>
+
+        <div class="table-actions-top">
+
+            <button id="bulkApprove"
+
+                class="approve-btn">
+
+                <i class="ri-checkbox-circle-line"></i>
+
+                Approve Selected
+
+            </button>
+
+            <button id="bulkReject"
+
+                class="reject-btn">
+
+                <i class="ri-close-circle-line"></i>
+
+                Reject Selected
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table id="userTable">
+
+            <thead>
+
+                <tr>
+
+                    <th width="50">
+
+                        <input
+
+                            type="checkbox"
+
+                            id="selectAll">
+
+                    </th>
+
+                    <th>User</th>
+
+                    <th>Role</th>
+
+                    <th>Game</th>
+
+                    <th>Country</th>
+
+                    <th>Joined</th>
+
+                    <th>Status</th>
+
+                    <th width="260">
+
+                        Actions
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="userTableBody">
+
+                <!-- Generated by user-verification.js -->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+        PAGINATION
+====================================== -->
+
+<section class="pagination-section">
+
+    <div class="page-info">
+
+        Showing
+
+        <span id="pageStart">
+
+            1
+
+        </span>
+
+        -
+
+        <span id="pageEnd">
+
+            10
+
+        </span>
+
+        of
+
+        <span id="pageTotal">
+
+            0
+
+        </span>
+
+        users
+
+    </div>
+
+    <div class="pagination">
+
+        <button
+
+            id="prevPage">
+
+            <i class="ri-arrow-left-s-line"></i>
+
+        </button>
+
+        <span id="currentPage">
+
+            1
+
+        </span>
+
+        <button
+
+            id="nextPage">
+
+            <i class="ri-arrow-right-s-line"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+        MAIN CONTENT GRID
+====================================== -->
+
+<section class="content-grid">
+
+    <div class="left-content">
+
+        <!-- Table already displayed above -->
+
+    </div>
+
+    <aside class="right-content">
+<!-- =====================================
+        USER DETAILS PANEL
+====================================== -->
+
+<div class="details-card">
+
+    <div class="details-header">
+
+        <img
+
+            id="profileImage"
+
+            src="../images/user1.png"
+
+            alt="User">
+
+        <div>
+
+            <h2 id="profileName">
+
+                Select a User
+
+            </h2>
+
+            <p id="profileRole">
+
+                User
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="details-body">
+
+        <div class="detail-row">
+
+            <span>Email</span>
+
+            <strong id="profileEmail">
+
+                -
+
+            </strong>
+
+        </div>
+
+        <div class="detail-row">
+
+            <span>Phone</span>
+
+            <strong id="profilePhone">
+
+                -
+
+            </strong>
+
+        </div>
+
+        <div class="detail-row">
+
+            <span>Country</span>
+
+            <strong id="profileCountry">
+
+                -
+
+            </strong>
+
+        </div>
+
+        <div class="detail-row">
+
+            <span>Game</span>
+
+            <strong id="profileGame">
+
+                -
+
+            </strong>
+
+        </div>
+
+        <div class="detail-row">
+
+            <span>Joined</span>
+
+            <strong id="profileJoined">
+
+                -
+
+            </strong>
+
+        </div>
+
+        <div class="detail-row">
+
+            <span>Status</span>
+
+            <strong id="profileStatus">
+
+                -
+
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+        DOCUMENTS
+====================================== -->
+
+<div class="details-card">
+
+    <h3>Submitted Documents</h3>
+
+    <div class="document-list">
+
+        <div class="document-item">
+
+            <span>
+
+                Aadhaar Card
+
+            </span>
+
+            <button
+
+                class="secondary-btn"
+
+                id="viewAadhar">
+
+                View
+
+            </button>
+
+        </div>
+
+        <div class="document-item">
+
+            <span>
+
+                PAN Card
+
+            </span>
+
+            <button
+
+                class="secondary-btn"
+
+                id="viewPan">
+
+                View
+
+            </button>
+
+        </div>
+
+        <div class="document-item">
+
+            <span>
+
+                Selfie Verification
+
+            </span>
+
+            <button
+
+                class="secondary-btn"
+
+                id="viewSelfie">
+
+                View
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+        ADMIN NOTES
+====================================== -->
+
+<div class="details-card">
+
+    <h3>
+
+        Admin Notes
+
+    </h3>
+
+    <textarea
+
+        id="adminNotes"
+
+        rows="6"
+
+        placeholder="Write notes about this verification...">
+
+    </textarea>
+
+</div>
+
+<!-- =====================================
+        VERIFICATION ACTIONS
+====================================== -->
+
+<div class="details-card">
+
+    <h3>
+
+        Verification Actions
+
+    </h3>
+
+    <div class="action-buttons">
+
+        <button
+
+            id="approveUser"
+
+            class="approve-btn">
+
+            <i class="ri-checkbox-circle-line"></i>
+
+            Approve
+
+        </button>
+
+        <button
+
+            id="rejectUser"
+
+            class="reject-btn">
+
+            <i class="ri-close-circle-line"></i>
+
+            Reject
+
+        </button>
+
+    </div>
+
+    <button
+
+        id="requestChanges"
+
+        class="secondary-btn full-width">
+
+        <i class="ri-edit-line"></i>
+
+        Request Changes
+
+    </button>
+
+</div>
+
+<!-- =====================================
+        RECENT ACTIVITY
+====================================== -->
+
+<div class="details-card">
+
+    <h3>
+
+        Verification History
+
+    </h3>
+
+    <div
+
+        id="verificationHistory"
+
+        class="history-list">
+
+        <!-- Loaded from JS -->
+
+    </div>
+
+</div>
+
+</aside>
+
+</section>
+
+</main>
+
+</div>
+
+<!-- =====================================
+        JAVASCRIPT
+====================================== -->
+
+<script src="../js/common.js"></script>
+
+<script src="../js/admin-utils.js"></script>
+
+<script src="../js/storage.js"></script>
+
+<script src="../js/seed.js"></script>
+
+<script src="../js/user-verification.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+csss
+
+
+/*=========================================================
+                GOOGLE FONT
+=========================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/*=========================================================
+                ROOT VARIABLES
+=========================================================*/
+
+:root{
+
+    --bg:#0D1117;
+    --bg-secondary:#161B22;
+    --card:#1F2937;
+
+    --purple:#7C3AED;
+    --purple-light:#9333EA;
+
+    --cyan:#06B6D4;
+    --green:#22C55E;
+    --yellow:#F59E0B;
+    --red:#EF4444;
+    --blue:#3B82F6;
+
+    --text:#F8FAFC;
+    --text-secondary:#94A3B8;
+
+    --border:#334155;
+
+    --radius:16px;
+
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+
+    --transition:.25s ease;
+
+}
+
+/*=========================================================
+                    RESET
+=========================================================*/
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:'Inter',sans-serif;
+
+background:var(--bg);
+
+color:var(--text);
+
+overflow-x:hidden;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+ul{
+
+list-style:none;
+
+}
+
+img{
+
+display:block;
+
+max-width:100%;
+
+}
+
+button{
+
+border:none;
+
+cursor:pointer;
+
+font-family:inherit;
+
+}
+
+input,
+select,
+textarea{
+
+font-family:inherit;
+
+outline:none;
+
+}
+
+/*=========================================================
+                    SCROLLBAR
+=========================================================*/
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111827;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:var(--purple);
+
+border-radius:20px;
+
+}
+
+/*=========================================================
+                DASHBOARD LAYOUT
+=========================================================*/
+
+.dashboard-container{
+
+display:grid;
+
+grid-template-columns:280px 1fr;
+
+min-height:100vh;
+
+background:var(--bg);
+
+}
+
+/*=========================================================
+                    SIDEBAR
+=========================================================*/
+
+.sidebar{
+
+background:var(--bg-secondary);
+
+border-right:1px solid var(--border);
+
+padding:24px;
+
+position:sticky;
+
+top:0;
+
+height:100vh;
+
+overflow-y:auto;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+margin-bottom:40px;
+
+}
+
+.logo i{
+
+font-size:34px;
+
+color:var(--purple);
+
+}
+
+.logo h2{
+
+font-size:28px;
+
+font-weight:700;
+
+}
+
+.menu{
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.menu li a{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:15px 18px;
+
+border-radius:14px;
+
+color:var(--text-secondary);
+
+transition:var(--transition);
+
+font-size:15px;
+
+font-weight:500;
+
+}
+
+.menu li a i{
+
+font-size:20px;
+
+}
+
+.menu li a:hover{
+
+background:rgba(124,58,237,.12);
+
+color:white;
+
+transform:translateX(4px);
+
+}
+
+.menu li.active a{
+
+background:linear-gradient(90deg,#7C3AED,#9333EA);
+
+color:white;
+
+box-shadow:0 0 18px rgba(124,58,237,.35);
+
+}
+
+/*=========================================================
+                MAIN CONTENT
+=========================================================*/
+
+.main-content{
+
+padding:30px;
+
+}
+
+/*=========================================================
+                    TOPBAR
+=========================================================*/
+
+.topbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:20px;
+
+margin-bottom:35px;
+
+flex-wrap:wrap;
+
+}
+
+.page-title h1{
+
+font-size:34px;
+
+font-weight:800;
+
+margin-bottom:8px;
+
+}
+
+.page-title p{
+
+color:var(--text-secondary);
+
+}
+
+.top-actions{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+/*=========================================================
+                    SEARCH BOX
+=========================================================*/
+
+.search-box{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+background:var(--bg-secondary);
+
+border:1px solid var(--border);
+
+padding:12px 18px;
+
+border-radius:14px;
+
+min-width:360px;
+
+}
+
+.search-box i{
+
+color:var(--cyan);
+
+font-size:18px;
+
+}
+
+.search-box input{
+
+flex:1;
+
+background:none;
+
+border:none;
+
+color:white;
+
+font-size:15px;
+
+}
+
+.search-box input::placeholder{
+
+color:var(--text-secondary);
+
+}
+
+/*=========================================================
+                NOTIFICATION BUTTONS
+=========================================================*/
+
+.notification{
+
+width:46px;
+
+height:46px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:12px;
+
+background:var(--bg-secondary);
+
+border:1px solid var(--border);
+
+color:white;
+
+transition:var(--transition);
+
+}
+
+.notification:hover{
+
+background:var(--purple);
+
+box-shadow:0 0 18px rgba(124,58,237,.35);
+
+transform:translateY(-2px);
+
+}
+
+/*=========================================================
+                    ADMIN PROFILE
+=========================================================*/
+
+.admin-profile{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+background:var(--bg-secondary);
+
+border:1px solid var(--border);
+
+padding:8px 16px;
+
+border-radius:14px;
+
+}
+
+.admin-profile img{
+
+width:48px;
+
+height:48px;
+
+border-radius:50%;
+
+border:2px solid var(--purple);
+
+object-fit:cover;
+
+}
+
+.admin-profile h4{
+
+font-size:15px;
+
+margin-bottom:2px;
+
+}
+
+.admin-profile span{
+
+font-size:13px;
+
+color:var(--text-secondary);
+
+}
+/*=========================================================
+                    STATISTICS CARDS
+=========================================================*/
+
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+gap:24px;
+
+margin-bottom:30px;
+
+}
+
+.stat-card{
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:16px;
+
+padding:24px;
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+box-shadow:var(--shadow);
+
+transition:.3s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.stat-card::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+width:5px;
+
+height:100%;
+
+background:var(--purple);
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 28px rgba(124,58,237,.25);
+
+}
+
+.stat-icon{
+
+width:65px;
+
+height:65px;
+
+border-radius:16px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:30px;
+
+color:#fff;
+
+flex-shrink:0;
+
+}
+
+.stat-icon.purple{
+
+background:linear-gradient(135deg,#7C3AED,#9333EA);
+
+}
+
+.stat-icon.warning{
+
+background:linear-gradient(135deg,#F59E0B,#D97706);
+
+}
+
+.stat-icon.success{
+
+background:linear-gradient(135deg,#22C55E,#16A34A);
+
+}
+
+.stat-icon.danger{
+
+background:linear-gradient(135deg,#EF4444,#DC2626);
+
+}
+
+.stat-content h2{
+
+font-size:34px;
+
+margin-bottom:6px;
+
+font-weight:700;
+
+}
+
+.stat-content p{
+
+color:var(--text-secondary);
+
+font-size:14px;
+
+}
+
+/*=========================================================
+                    FILTER BAR
+=========================================================*/
+
+.filter-bar{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+margin-bottom:30px;
+
+flex-wrap:wrap;
+
+}
+
+.filter-bar select{
+
+background:var(--bg-secondary);
+
+color:white;
+
+border:1px solid var(--border);
+
+padding:12px 18px;
+
+border-radius:12px;
+
+min-width:180px;
+
+font-size:14px;
+
+transition:.3s;
+
+}
+
+.filter-bar select:focus{
+
+border-color:var(--cyan);
+
+box-shadow:0 0 10px rgba(6,182,212,.3);
+
+}
+
+.secondary-btn{
+
+background:transparent;
+
+border:1px solid var(--cyan);
+
+color:var(--cyan);
+
+padding:12px 20px;
+
+border-radius:12px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.secondary-btn:hover{
+
+background:var(--cyan);
+
+color:#fff;
+
+}
+
+/*=========================================================
+                    TABLE CARD
+=========================================================*/
+
+.table-card{
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:16px;
+
+overflow:hidden;
+
+box-shadow:var(--shadow);
+
+margin-bottom:25px;
+
+}
+
+.table-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:24px;
+
+border-bottom:1px solid var(--border);
+
+}
+
+.table-header h2{
+
+font-size:24px;
+
+margin-bottom:6px;
+
+}
+
+.table-header p{
+
+color:var(--text-secondary);
+
+font-size:14px;
+
+}
+
+.table-actions-top{
+
+display:flex;
+
+gap:15px;
+
+}
+
+.table-responsive{
+
+overflow-x:auto;
+
+}
+
+/*=========================================================
+                    TABLE
+=========================================================*/
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+thead{
+
+background:#111827;
+
+}
+
+thead th{
+
+padding:18px;
+
+text-align:left;
+
+font-size:14px;
+
+font-weight:600;
+
+color:#F8FAFC;
+
+}
+
+tbody td{
+
+padding:18px;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+font-size:14px;
+
+color:var(--text-secondary);
+
+}
+
+tbody tr{
+
+transition:.25s;
+
+}
+
+tbody tr:hover{
+
+background:rgba(124,58,237,.08);
+
+}
+
+/*=========================================================
+                    USER INFO
+=========================================================*/
+
+.user-info{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.user-info img{
+
+width:44px;
+
+height:44px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:2px solid var(--purple);
+
+}
+
+.user-info h4{
+
+font-size:15px;
+
+margin-bottom:4px;
+
+color:white;
+
+}
+
+.user-info small{
+
+font-size:13px;
+
+color:var(--text-secondary);
+
+}
+
+/*=========================================================
+                    STATUS BADGES
+=========================================================*/
+
+.status{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:6px 14px;
+
+border-radius:30px;
+
+font-size:12px;
+
+font-weight:600;
+
+}
+
+.status.pending{
+
+background:rgba(245,158,11,.15);
+
+color:#F59E0B;
+
+}
+
+.status.approved{
+
+background:rgba(34,197,94,.15);
+
+color:#22C55E;
+
+}
+
+.status.rejected{
+
+background:rgba(239,68,68,.15);
+
+color:#EF4444;
+
+}
+
+/*=========================================================
+                    ACTION BUTTONS
+=========================================================*/
+
+.action-buttons{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+}
+
+.view-btn,
+
+.approve-btn,
+
+.reject-btn{
+
+padding:10px 14px;
+
+border-radius:10px;
+
+font-size:13px;
+
+font-weight:600;
+
+transition:.3s;
+
+display:flex;
+
+align-items:center;
+
+gap:6px;
+
+}
+
+.view-btn{
+
+background:#334155;
+
+color:#fff;
+
+}
+
+.view-btn:hover{
+
+background:#475569;
+
+}
+
+.approve-btn{
+
+background:#22C55E;
+
+color:white;
+
+}
+
+.approve-btn:hover{
+
+background:#16A34A;
+
+}
+
+.reject-btn{
+
+background:#EF4444;
+
+color:white;
+
+}
+
+.reject-btn:hover{
+
+background:#DC2626;
+
+}
+/*=========================================================
+                CONTENT GRID
+=========================================================*/
+
+.content-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:24px;
+
+margin-top:25px;
+
+}
+
+.left-content{
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+
+}
+
+.right-content{
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+
+}
+
+/*=========================================================
+                DETAILS CARD
+=========================================================*/
+
+.details-card{
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:16px;
+
+padding:24px;
+
+box-shadow:var(--shadow);
+
+transition:.3s;
+
+}
+
+.details-card:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 0 25px rgba(124,58,237,.18);
+
+}
+
+.details-card h3{
+
+margin-bottom:18px;
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
+/*=========================================================
+                PROFILE
+=========================================================*/
+
+.details-header{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+margin-bottom:24px;
+
+}
+
+.details-header img{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+border:3px solid var(--purple);
+
+object-fit:cover;
+
+}
+
+.details-header h2{
+
+font-size:24px;
+
+margin-bottom:6px;
+
+}
+
+.details-header p{
+
+color:var(--text-secondary);
+
+}
+
+/*=========================================================
+                DETAIL ROWS
+=========================================================*/
+
+.detail-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:14px 0;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.detail-row:last-child{
+
+border-bottom:none;
+
+}
+
+.detail-row span{
+
+color:var(--text-secondary);
+
+}
+
+.detail-row strong{
+
+color:white;
+
+font-weight:600;
+
+}
+
+/*=========================================================
+                DOCUMENTS
+=========================================================*/
+
+.document-list{
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.document-item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:16px;
+
+background:var(--bg-secondary);
+
+border:1px solid var(--border);
+
+border-radius:12px;
+
+transition:.3s;
+
+}
+
+.document-item:hover{
+
+border-color:var(--purple);
+
+}
+
+/*=========================================================
+                NOTES
+=========================================================*/
+
+#adminNotes{
+
+width:100%;
+
+background:var(--bg-secondary);
+
+border:1px solid var(--border);
+
+border-radius:12px;
+
+padding:16px;
+
+color:white;
+
+resize:vertical;
+
+min-height:150px;
+
+}
+
+#adminNotes:focus{
+
+border-color:var(--cyan);
+
+box-shadow:0 0 10px rgba(6,182,212,.35);
+
+}
+
+/*=========================================================
+                ACTION BUTTONS
+=========================================================*/
+
+.full-width{
+
+width:100%;
+
+margin-top:16px;
+
+}
+
+.action-buttons{
+
+display:flex;
+
+gap:16px;
+
+}
+
+.action-buttons button{
+
+flex:1;
+
+}
+
+/*=========================================================
+                HISTORY
+=========================================================*/
+
+.history-list{
+
+max-height:300px;
+
+overflow-y:auto;
+
+}
+
+.history-item{
+
+display:flex;
+
+gap:14px;
+
+padding:14px 0;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.history-item:last-child{
+
+border-bottom:none;
+
+}
+
+.history-icon{
+
+width:42px;
+
+height:42px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#7C3AED,#9333EA);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:white;
+
+flex-shrink:0;
+
+}
+
+.history-content h4{
+
+font-size:15px;
+
+margin-bottom:4px;
+
+}
+
+.history-content p{
+
+font-size:13px;
+
+color:var(--text-secondary);
+
+}
+
+.history-content span{
+
+font-size:12px;
+
+color:#64748B;
+
+}
+
+/*=========================================================
+                PAGINATION
+=========================================================*/
+
+.pagination-section{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin:30px 0;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+}
+
+.page-info{
+
+color:var(--text-secondary);
+
+font-size:14px;
+
+}
+
+.pagination{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.pagination button{
+
+width:42px;
+
+height:42px;
+
+border-radius:10px;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+color:white;
+
+transition:.3s;
+
+}
+
+.pagination button:hover{
+
+background:var(--purple);
+
+}
+
+#currentPage{
+
+font-weight:700;
+
+font-size:16px;
+
+min-width:30px;
+
+text-align:center;
+
+}
+
+/*=========================================================
+                ANIMATIONS
+=========================================================*/
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.stat-card,
+
+.table-card,
+
+.details-card{
+
+animation:fadeIn .45s ease;
+
+}
+
+/*=========================================================
+                RESPONSIVE
+=========================================================*/
+
+@media(max-width:1200px){
+
+.content-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:992px){
+
+.dashboard-container{
+
+grid-template-columns:1fr;
+
+}
+
+.sidebar{
+
+position:relative;
+
+height:auto;
+
+}
+
+.topbar{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.top-actions{
+
+width:100%;
+
+flex-wrap:wrap;
+
+}
+
+.search-box{
+
+min-width:100%;
+
+}
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.filter-bar{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+.filter-bar select,
+
+.secondary-btn{
+
+width:100%;
+
+}
+
+.table-header{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:15px;
+
+}
+
+.table-actions-top{
+
+width:100%;
+
+}
+
+.table-actions-top button{
+
+flex:1;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.main-content{
+
+padding:18px;
+
+}
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.details-header{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.action-buttons{
+
+flex-direction:column;
+
+}
+
+.pagination-section{
+
+flex-direction:column;
+
+}
+
+.admin-profile{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.page-title h1{
+
+font-size:28px;
+
+}
+
+}
+
+/*=========================================================
+                SELECTION
+=========================================================*/
+
+::selection{
+
+background:#7C3AED;
+
+color:white;
+
+}
+
+
+
+
+jssse
+
+
+
+"use strict";
+
+/*=========================================================
+                GAMEVERSE USER VERIFICATION
+=========================================================*/
+
+let users = [];
+let filteredUsers = [];
+let selectedUser = null;
+
+let currentPage = 1;
+const rowsPerPage = 10;
+
+/*=========================================================
+                DOM REFERENCES
+=========================================================*/
+
+const tableBody = document.getElementById("userTableBody");
+
+const totalUsers = document.getElementById("totalUsers");
+const pendingUsers = document.getElementById("pendingUsers");
+const approvedUsers = document.getElementById("approvedUsers");
+const rejectedUsers = document.getElementById("rejectedUsers");
+
+const tableCount = document.getElementById("tableCount");
+
+const searchInput = document.getElementById("searchUser");
+
+const statusFilter = document.getElementById("statusFilter");
+const roleFilter = document.getElementById("roleFilter");
+const countryFilter = document.getElementById("countryFilter");
+
+const pageStart = document.getElementById("pageStart");
+const pageEnd = document.getElementById("pageEnd");
+const pageTotal = document.getElementById("pageTotal");
+const currentPageLabel = document.getElementById("currentPage");
+
+/*=========================================================
+                INITIALIZE
+=========================================================*/
+
+document.addEventListener("DOMContentLoaded", initialize);
+
+function initialize() {
+
+    loadUsers();
+
+    populateCountryFilter();
+
+    updateStatistics();
+
+    renderUsers();
+
+    initializeEvents();
+
+}
+
+/*=========================================================
+                LOAD USERS
+=========================================================*/
+
+function loadUsers() {
+
+    users = Storage.load(COLLECTIONS.USERS) || [];
+
+    filteredUsers = [...users];
+
+}
+
+/*=========================================================
+                UPDATE STATISTICS
+=========================================================*/
+
+function updateStatistics() {
+
+    totalUsers.textContent = users.length;
+
+    pendingUsers.textContent =
+
+        users.filter(user =>
+
+            user.status === "Pending"
+
+        ).length;
+
+    approvedUsers.textContent =
+
+        users.filter(user =>
+
+            user.status === "Approved"
+
+        ).length;
+
+    rejectedUsers.textContent =
+
+        users.filter(user =>
+
+            user.status === "Rejected"
+
+        ).length;
+
+}
+
+/*=========================================================
+                COUNTRY FILTER
+=========================================================*/
+
+function populateCountryFilter() {
+
+    const countries = [
+
+        ...new Set(
+
+            users.map(
+
+                user => user.country
+
+            )
+
+        )
+
+    ];
+
+    countries.sort();
+
+    countries.forEach(country => {
+
+        const option =
+
+            document.createElement("option");
+
+        option.value = country;
+
+        option.textContent = country;
+
+        countryFilter.appendChild(option);
+
+    });
+
+}
+
+/*=========================================================
+                SAVE USERS
+=========================================================*/
+
+function saveUsers() {
+
+    Storage.save(
+
+        COLLECTIONS.USERS,
+
+        users
+
+    );
+
+}
+
+/*=========================================================
+                REFRESH PAGE
+=========================================================*/
+
+function refreshPage() {
+
+    loadUsers();
+
+    updateStatistics();
+
+    renderUsers();
+
+}
+/*=========================================================
+                RENDER USERS TABLE
+=========================================================*/
+
+function renderUsers() {
+
+    if (!tableBody) return;
+
+    tableBody.innerHTML = "";
+
+    const start = (currentPage - 1) * rowsPerPage;
+
+    const end = start + rowsPerPage;
+
+    const pageUsers = filteredUsers.slice(start, end);
+
+    pageUsers.forEach(user => {
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+
+            <td>
+
+                <input
+
+                    type="checkbox"
+
+                    class="user-checkbox"
+
+                    value="${user.id}">
+
+            </td>
+
+            <td>
+
+                <div class="user-info">
+
+                    <img src="${user.avatar || '../images/default-user.png'}">
+
+                    <div>
+
+                        <h4>${user.username}</h4>
+
+                        <small>${user.email}</small>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+            <td>${user.role}</td>
+
+            <td>${user.game}</td>
+
+            <td>${user.country}</td>
+
+            <td>${user.joined}</td>
+
+            <td>
+
+                <span class="status ${user.status.toLowerCase()}">
+
+                    ${user.status}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <div class="action-buttons">
+
+                    <button
+
+                        class="view-btn"
+
+                        onclick="viewUser(${user.id})">
+
+                        <i class="ri-eye-line"></i>
+
+                    </button>
+
+                    <button
+
+                        class="approve-btn"
+
+                        onclick="approveUser(${user.id})">
+
+                        <i class="ri-check-line"></i>
+
+                    </button>
+
+                    <button
+
+                        class="reject-btn"
+
+                        onclick="rejectUser(${user.id})">
+
+                        <i class="ri-close-line"></i>
+
+                    </button>
+
+                </div>
+
+            </td>
+
+        `;
+
+        tableBody.appendChild(row);
+
+    });
+
+    updatePagination();
+
+}
+
+/*=========================================================
+                PAGINATION
+=========================================================*/
+
+function updatePagination() {
+
+    pageTotal.textContent = filteredUsers.length;
+
+    pageStart.textContent =
+
+        filteredUsers.length === 0
+
+        ? 0
+
+        : (currentPage - 1) * rowsPerPage + 1;
+
+    pageEnd.textContent =
+
+        Math.min(
+
+            currentPage * rowsPerPage,
+
+            filteredUsers.length
+
+        );
+
+    currentPageLabel.textContent = currentPage;
+
+}
+
+/*=========================================================
+                NEXT PAGE
+=========================================================*/
+
+function nextPage() {
+
+    const totalPages = Math.ceil(
+
+        filteredUsers.length / rowsPerPage
+
+    );
+
+    if (currentPage < totalPages) {
+
+        currentPage++;
+
+        renderUsers();
+
+    }
+
+}
+
+/*=========================================================
+                PREVIOUS PAGE
+=========================================================*/
+
+function previousPage() {
+
+    if (currentPage > 1) {
+
+        currentPage--;
+
+        renderUsers();
+
+    }
+
+}
+
+/*=========================================================
+                SELECT ALL
+=========================================================*/
+
+function toggleSelectAll(isChecked) {
+
+    document
+
+        .querySelectorAll(".user-checkbox")
+
+        .forEach(box => {
+
+            box.checked = isChecked;
+
+        });
+
+}
+
+/*=========================================================
+                SELECTED USERS
+=========================================================*/
+
+function getSelectedUsers() {
+
+    const ids = [];
+
+    document
+
+        .querySelectorAll(".user-checkbox:checked")
+
+        .forEach(box => {
+
+            ids.push(
+
+                Number(box.value)
+
+            );
+
+        });
+
+    return ids;
+
+}
+/*=========================================================
+                VIEW USER DETAILS
+=========================================================*/
+
+function viewUser(id) {
+
+    selectedUser = users.find(user => user.id === id);
+
+    if (!selectedUser) return;
+
+    document.getElementById("profileImage").src =
+        selectedUser.avatar || "../images/default-user.png";
+
+    document.getElementById("profileName").textContent =
+        selectedUser.username;
+
+    document.getElementById("profileRole").textContent =
+        selectedUser.role;
+
+    document.getElementById("profileEmail").textContent =
+        selectedUser.email;
+
+    document.getElementById("profilePhone").textContent =
+        selectedUser.phone;
+
+    document.getElementById("profileCountry").textContent =
+        selectedUser.country;
+
+    document.getElementById("profileGame").textContent =
+        selectedUser.game;
+
+    document.getElementById("profileJoined").textContent =
+        selectedUser.joined;
+
+    document.getElementById("profileStatus").textContent =
+        selectedUser.status;
+
+    document.getElementById("adminNotes").value =
+        selectedUser.notes || "";
+
+    loadVerificationHistory();
+
+}
+
+/*=========================================================
+                APPROVE USER
+=========================================================*/
+
+function approveUser(id) {
+
+    const user = users.find(u => u.id === id);
+
+    if (!user) return;
+
+    user.status = "Approved";
+
+    user.verified = true;
+
+    user.notes =
+        document.getElementById("adminNotes").value;
+
+    saveUsers();
+
+    addActivity(
+
+        "Approved User",
+
+        user.username
+
+    );
+
+    refreshPage();
+
+    viewUser(id);
+
+    showNotification(
+
+        "User approved successfully",
+
+        "success"
+
+    );
+
+}
+
+/*=========================================================
+                REJECT USER
+=========================================================*/
+
+function rejectUser(id) {
+
+    const reason = prompt(
+
+        "Enter rejection reason"
+
+    );
+
+    if (reason === null) return;
+
+    const user = users.find(u => u.id === id);
+
+    if (!user) return;
+
+    user.status = "Rejected";
+
+    user.verified = false;
+
+    user.notes = reason;
+
+    saveUsers();
+
+    addActivity(
+
+        "Rejected User",
+
+        user.username
+
+    );
+
+    refreshPage();
+
+    viewUser(id);
+
+    showNotification(
+
+        "User rejected successfully",
+
+        "error"
+
+    );
+
+}
+
+/*=========================================================
+                REQUEST CHANGES
+=========================================================*/
+
+function requestChanges() {
+
+    if (!selectedUser) {
+
+        alert(
+
+            "Please select a user first."
+
+        );
+
+        return;
+
+    }
+
+    const remarks = prompt(
+
+        "Enter remarks"
+
+    );
+
+    if (remarks === null) return;
+
+    selectedUser.notes = remarks;
+
+    selectedUser.status = "Pending";
+
+    saveUsers();
+
+    addActivity(
+
+        "Requested Changes",
+
+        selectedUser.username
+
+    );
+
+    refreshPage();
+
+    viewUser(selectedUser.id);
+
+    showNotification(
+
+        "Changes requested",
+
+        "warning"
+
+    );
+
+}
+
+/*=========================================================
+                SAVE NOTES
+=========================================================*/
+
+function saveNotes() {
+
+    if (!selectedUser) return;
+
+    selectedUser.notes =
+
+        document.getElementById("adminNotes").value;
+
+    saveUsers();
+
+}
+
+/*=========================================================
+                VERIFICATION HISTORY
+=========================================================*/
+
+function loadVerificationHistory() {
+
+    const historyContainer =
+
+        document.getElementById(
+
+            "verificationHistory"
+
+        );
+
+    if (!historyContainer) return;
+
+    historyContainer.innerHTML = "";
+
+    const logs =
+
+        Storage.load(
+
+            COLLECTIONS.ACTIVITY_LOGS
+
+        ) || [];
+
+    const history = logs.filter(log =>
+
+        log.target === selectedUser.username
+
+    );
+
+    if (history.length === 0) {
+
+        historyContainer.innerHTML =
+
+            "<p>No verification history available.</p>";
+
+        return;
+
+    }
+
+    history.forEach(log => {
+
+        const item =
+
+            document.createElement("div");
+
+        item.className =
+
+            "history-item";
+
+        item.innerHTML = `
+
+            <div class="history-icon">
+
+                <i class="ri-history-line"></i>
+
+            </div>
+
+            <div class="history-content">
+
+                <h4>${log.action}</h4>
+
+                <p>${log.admin}</p>
+
+                <span>
+
+                    ${log.date}
+
+                    ${log.time}
+
+                </span>
+
+            </div>
+
+        `;
+
+        historyContainer.appendChild(item);
+
+    });
+
+}
+/*=========================================================
+                SEARCH USERS
+=========================================================*/
+
+function searchUsers() {
+
+    const keyword =
+
+        searchInput.value
+
+        .trim()
+
+        .toLowerCase();
+
+    filteredUsers = users.filter(user => {
+
+        return (
+
+            user.username.toLowerCase().includes(keyword) ||
+
+            user.email.toLowerCase().includes(keyword) ||
+
+            user.phone.toLowerCase().includes(keyword) ||
+
+            user.country.toLowerCase().includes(keyword) ||
+
+            user.game.toLowerCase().includes(keyword)
+
+        );
+
+    });
+
+    applyFilters(false);
+
+}
+
+/*=========================================================
+                APPLY FILTERS
+=========================================================*/
+
+function applyFilters(resetPage = true) {
+
+    let data = [...users];
+
+    const keyword =
+
+        searchInput.value
+
+        .trim()
+
+        .toLowerCase();
+
+    const status = statusFilter.value;
+
+    const role = roleFilter.value;
+
+    const country = countryFilter.value;
+
+    data = data.filter(user => {
+
+        const matchSearch =
+
+            user.username.toLowerCase().includes(keyword) ||
+
+            user.email.toLowerCase().includes(keyword) ||
+
+            user.phone.toLowerCase().includes(keyword) ||
+
+            user.game.toLowerCase().includes(keyword);
+
+        const matchStatus =
+
+            status === "All" ||
+
+            user.status === status;
+
+        const matchRole =
+
+            role === "All" ||
+
+            user.role === role;
+
+        const matchCountry =
+
+            country === "All" ||
+
+            user.country === country;
+
+        return (
+
+            matchSearch &&
+
+            matchStatus &&
+
+            matchRole &&
+
+            matchCountry
+
+        );
+
+    });
+
+    filteredUsers = data;
+
+    if (resetPage)
+
+        currentPage = 1;
+
+    renderUsers();
+
+}
+
+/*=========================================================
+                RESET FILTERS
+=========================================================*/
+
+function resetFilters() {
+
+    searchInput.value = "";
+
+    statusFilter.value = "All";
+
+    roleFilter.value = "All";
+
+    countryFilter.value = "All";
+
+    filteredUsers = [...users];
+
+    currentPage = 1;
+
+    renderUsers();
+
+}
+
+/*=========================================================
+                BULK APPROVE
+=========================================================*/
+
+function bulkApprove() {
+
+    const selected =
+
+        getSelectedUsers();
+
+    if (selected.length === 0) {
+
+        alert("Select at least one user.");
+
+        return;
+
+    }
+
+    selected.forEach(id => {
+
+        const user = users.find(
+
+            u => u.id === id
+
+        );
+
+        if (user) {
+
+            user.status = "Approved";
+
+            user.verified = true;
+
+            addActivity(
+
+                "Approved User",
+
+                user.username
+
+            );
+
+        }
+
+    });
+
+    saveUsers();
+
+    refreshPage();
+
+    showNotification(
+
+        selected.length +
+
+        " users approved",
+
+        "success"
+
+    );
+
+}
+
+/*=========================================================
+                BULK REJECT
+=========================================================*/
+
+function bulkReject() {
+
+    const selected =
+
+        getSelectedUsers();
+
+    if (selected.length === 0) {
+
+        alert("Select at least one user.");
+
+        return;
+
+    }
+
+    selected.forEach(id => {
+
+        const user = users.find(
+
+            u => u.id === id
+
+        );
+
+        if (user) {
+
+            user.status = "Rejected";
+
+            user.verified = false;
+
+            addActivity(
+
+                "Rejected User",
+
+                user.username
+
+            );
+
+        }
+
+    });
+
+    saveUsers();
+
+    refreshPage();
+
+    showNotification(
+
+        selected.length +
+
+        " users rejected",
+
+        "error"
+
+    );
+
+}
+
+/*=========================================================
+                SELECT ALL
+=========================================================*/
+
+function initializeSelectAll() {
+
+    const selectAll =
+
+        document.getElementById("selectAll");
+
+    if (!selectAll) return;
+
+    selectAll.addEventListener(
+
+        "change",
+
+        function () {
+
+            toggleSelectAll(
+
+                this.checked
+
+            );
+
+        }
+
+    );
+
+}
+/*=========================================================
+                ACTIVITY LOG
+=========================================================*/
+
+function addActivity(action, username) {
+
+    let logs = Storage.load(COLLECTIONS.ACTIVITY_LOGS) || [];
+
+    logs.unshift({
+
+        id: Date.now(),
+
+        action: action,
+
+        target: username,
+
+        admin: "Super Admin",
+
+        module: "User Verification",
+
+        date: new Date().toLocaleDateString(),
+
+        time: new Date().toLocaleTimeString()
+
+    });
+
+    Storage.save(COLLECTIONS.ACTIVITY_LOGS, logs);
+
+}
+
+/*=========================================================
+                TOAST NOTIFICATION
+=========================================================*/
+
+function showNotification(message, type = "success") {
+
+    const toast = document.createElement("div");
+
+    toast.className = `toast ${type}`;
+
+    toast.innerHTML = `
+
+        <i class="ri-information-line"></i>
+
+        <span>${message}</span>
+
+    `;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+
+        toast.classList.add("show");
+
+    }, 100);
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+        setTimeout(() => {
+
+            toast.remove();
+
+        }, 300);
+
+    }, 3000);
+
+}
+
+/*=========================================================
+                EXPORT CSV
+=========================================================*/
+
+function exportUsers() {
+
+    const headers = [
+
+        "Username",
+
+        "Email",
+
+        "Phone",
+
+        "Country",
+
+        "Role",
+
+        "Game",
+
+        "Status"
+
+    ];
+
+    const rows = users.map(user => [
+
+        user.username,
+
+        user.email,
+
+        user.phone,
+
+        user.country,
+
+        user.role,
+
+        user.game,
+
+        user.status
+
+    ]);
+
+    let csv = headers.join(",") + "\n";
+
+    rows.forEach(row => {
+
+        csv += row.join(",") + "\n";
+
+    });
+
+    const blob = new Blob(
+
+        [csv],
+
+        {
+
+            type: "text/csv"
+
+        }
+
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+
+    link.download = "users.csv";
+
+    link.click();
+
+}
+
+/*=========================================================
+                IMPORT CSV
+=========================================================*/
+
+function importUsers(file) {
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+
+        console.log(
+
+            event.target.result
+
+        );
+
+        showNotification(
+
+            "CSV Imported",
+
+            "success"
+
+        );
+
+    };
+
+    reader.readAsText(file);
+
+}
+
+/*=========================================================
+                EVENT LISTENERS
+=========================================================*/
+
+function initializeEvents() {
+
+    searchInput.addEventListener(
+
+        "input",
+
+        searchUsers
+
+    );
+
+    statusFilter.addEventListener(
+
+        "change",
+
+        applyFilters
+
+    );
+
+    roleFilter.addEventListener(
+
+        "change",
+
+        applyFilters
+
+    );
+
+    countryFilter.addEventListener(
+
+        "change",
+
+        applyFilters
+
+    );
+
+    document
+
+        .getElementById("resetFilters")
+
+        .addEventListener(
+
+            "click",
+
+            resetFilters
+
+        );
+
+    document
+
+        .getElementById("prevPage")
+
+        .addEventListener(
+
+            "click",
+
+            previousPage
+
+        );
+
+    document
+
+        .getElementById("nextPage")
+
+        .addEventListener(
+
+            "click",
+
+            nextPage
+
+        );
+
+    document
+
+        .getElementById("bulkApprove")
+
+        .addEventListener(
+
+            "click",
+
+            bulkApprove
+
+        );
+
+    document
+
+        .getElementById("bulkReject")
+
+        .addEventListener(
+
+            "click",
+
+            bulkReject
+
+        );
+
+    document
+
+        .getElementById("requestChanges")
+
+        .addEventListener(
+
+            "click",
+
+            requestChanges
+
+        );
+
+    document
+
+        .getElementById("adminNotes")
+
+        .addEventListener(
+
+            "keyup",
+
+            saveNotes
+
+        );
+
+    initializeSelectAll();
+
+}
+
+/*=========================================================
+                STORAGE SYNC
+=========================================================*/
+
+window.addEventListener(
+
+    "storage",
+
+    refreshPage
+
+);
+
+/*=========================================================
+                PAGE READY
+=========================================================*/
+
+window.addEventListener(
+
+    "focus",
+
+    refreshPage
+
+);
+
+/*=========================================================
+                MODULE LOADED
+=========================================================*/
+
+console.log(
+
+    "%cGameVerse User Verification Ready",
+
+    "color:#7C3AED;font-size:18px;font-weight:bold;"
+
+);
