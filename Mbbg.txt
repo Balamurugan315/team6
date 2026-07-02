@@ -1,0 +1,761 @@
+You are a Senior Full Stack Software Engineer, Senior UI/UX Designer, and Software Architect.
+
+Build a COMPLETE production-quality Admin Dashboard for an Esports & Gaming Platform called "GameVerse".
+
+IMPORTANT REQUIREMENTS
+
+• Use ONLY
+  - HTML5
+  - CSS3
+  - Vanilla JavaScript (ES6)
+
+• DO NOT use
+  - React
+  - Angular
+  - Vue
+  - Bootstrap
+  - Tailwind
+  - jQuery
+  - Node.js
+  - Express
+  - PHP
+  - Database
+  - Firebase
+
+Everything must work entirely on the frontend.
+
+The project uses LocalStorage as the database.
+
+Dummy data already exists inside seed.js.
+
+Use storage.js as the database manager.
+
+Every page must read and write data using storage.js.
+
+Never hardcode any data inside HTML.
+
+Every table must be generated dynamically using JavaScript.
+
+--------------------------------------------------
+
+PROJECT STRUCTURE
+
+Create the following structure.
+
+/
+
+index.html
+
+/styles
+
+style.css
+
+/js
+
+storage.js
+
+seed.js
+
+app.js
+
+/images
+
+--------------------------------------------------
+
+IMPORTANT
+
+Create ONLY ONE HTML FILE
+
+index.html
+
+This will become a Single Page Application (SPA).
+
+DO NOT create multiple HTML pages.
+
+Instead create different dashboard sections.
+
+Show and hide sections using JavaScript.
+
+Navigation should switch sections without reloading.
+
+--------------------------------------------------
+
+THEME
+
+Create a Premium Gaming UI similar to
+
+Discord
+
+Steam
+
+Riot Games
+
+Epic Games
+
+Modern Admin Dashboard
+
+Dark futuristic design
+
+--------------------------------------------------
+
+COLOR PALETTE
+
+Primary Background
+
+#0D1117
+
+Secondary Background
+
+#161B22
+
+Cards
+
+#1F2937
+
+Purple
+
+#7C3AED
+
+Cyan
+
+#06B6D4
+
+Green
+
+#22C55E
+
+Yellow
+
+#F59E0B
+
+Red
+
+#EF4444
+
+Text
+
+#F8FAFC
+
+Secondary Text
+
+#94A3B8
+
+Borders
+
+#334155
+
+--------------------------------------------------
+
+TYPOGRAPHY
+
+Use
+
+Inter
+
+Font weights
+
+400
+
+500
+
+600
+
+700
+
+800
+
+--------------------------------------------------
+
+SIDEBAR
+
+Permanent desktop sidebar
+
+Collapsible on mobile
+
+Contains
+
+Dashboard
+
+User Verification
+
+Influencer Verification
+
+Brand Verification
+
+Tournament Management
+
+Subscription Management
+
+Reports
+
+Analytics
+
+Activity Logs
+
+Support Tickets
+
+Settings
+
+Logout
+
+Current page highlighted
+
+Smooth hover animation
+
+--------------------------------------------------
+
+TOPBAR
+
+Sticky
+
+Contains
+
+Search
+
+Notifications
+
+Messages
+
+Dark Mode (optional)
+
+Admin Profile
+
+--------------------------------------------------
+
+ANIMATIONS
+
+Fade
+
+Slide
+
+Card Hover
+
+Glow
+
+Button Ripple
+
+Smooth Transitions
+
+300ms
+
+--------------------------------------------------
+
+CARDS
+
+Rounded
+
+16px
+
+Border
+
+Shadow
+
+Hover Lift
+
+--------------------------------------------------
+
+BUTTONS
+
+Primary
+
+Purple Gradient
+
+Secondary
+
+Dark
+
+Danger
+
+Red
+
+Success
+
+Green
+
+--------------------------------------------------
+
+INPUTS
+
+Dark
+
+Rounded
+
+Cyan Focus Border
+
+--------------------------------------------------
+
+DATABASE
+
+Use storage.js
+
+Use LocalStorage
+
+Use seed.js
+
+If LocalStorage is empty
+
+Automatically execute seed.js
+
+Never duplicate records.
+
+--------------------------------------------------
+
+DASHBOARD
+
+Display
+
+Total Users
+
+Verified Users
+
+Pending Users
+
+Rejected Users
+
+Influencers
+
+Brands
+
+Tournaments
+
+Revenue
+
+Support Tickets
+
+Subscription Count
+
+Display
+
+Recent Users
+
+Recent Activity
+
+Recent Tournaments
+
+Recent Support Tickets
+
+Charts
+
+User Distribution Pie
+
+Verification Pie
+
+Revenue Line
+
+Tournament Bar
+
+Growth Line
+
+Use Chart.js
+
+--------------------------------------------------
+
+USER VERIFICATION
+
+Statistics
+
+Dynamic Table
+
+Search
+
+Filter
+
+Pagination
+
+View Details
+
+Approve
+
+Reject
+
+Request Changes
+
+Admin Notes
+
+Bulk Approve
+
+Bulk Reject
+
+CSV Export
+
+CSV Import
+
+Update LocalStorage
+
+Update Dashboard automatically
+
+--------------------------------------------------
+
+INFLUENCER VERIFICATION
+
+Same functionality
+
+Subscribers
+
+Views
+
+Platform
+
+Engagement
+
+Approve
+
+Reject
+
+--------------------------------------------------
+
+BRAND VERIFICATION
+
+Company
+
+Website
+
+Industry
+
+Revenue
+
+Campaigns
+
+Approve
+
+Reject
+
+--------------------------------------------------
+
+TOURNAMENT MANAGEMENT
+
+Create Tournament
+
+Edit Tournament
+
+Delete Tournament
+
+Search
+
+Filters
+
+Prize Pool
+
+Teams
+
+Winner
+
+Status
+
+--------------------------------------------------
+
+SUBSCRIPTION MANAGEMENT
+
+Plans
+
+Revenue
+
+Subscribers
+
+Upgrade
+
+Cancel
+
+Statistics
+
+--------------------------------------------------
+
+REPORTS
+
+Generate Report
+
+Export PDF
+
+Export CSV
+
+Summary Cards
+
+--------------------------------------------------
+
+ANALYTICS
+
+Charts
+
+Growth
+
+Revenue
+
+Verification
+
+Country Distribution
+
+Top Games
+
+--------------------------------------------------
+
+ACTIVITY LOGS
+
+Dynamic Timeline
+
+Every action must be logged.
+
+Examples
+
+Approved User
+
+Rejected User
+
+Created Tournament
+
+Deleted Brand
+
+Created Subscription
+
+Timestamp
+
+Admin Name
+
+--------------------------------------------------
+
+SUPPORT TICKETS
+
+Open
+
+Resolved
+
+Pending
+
+Assign
+
+Priority
+
+Search
+
+--------------------------------------------------
+
+SETTINGS
+
+Platform Name
+
+Theme
+
+Notification Toggle
+
+Auto Backup
+
+Save Settings
+
+--------------------------------------------------
+
+SEARCH
+
+Global Search
+
+Search entire application
+
+--------------------------------------------------
+
+FILTERS
+
+Every table
+
+Status
+
+Date
+
+Country
+
+Role
+
+Platform
+
+--------------------------------------------------
+
+PAGINATION
+
+Every table
+
+10 rows
+
+Previous
+
+Next
+
+Current Page
+
+--------------------------------------------------
+
+NOTIFICATIONS
+
+Never use browser alerts.
+
+Create beautiful Toast Notifications.
+
+Top Right
+
+Success
+
+Warning
+
+Error
+
+--------------------------------------------------
+
+MODALS
+
+View User
+
+Edit Tournament
+
+View Brand
+
+Delete Confirmation
+
+--------------------------------------------------
+
+RESPONSIVE
+
+Desktop
+
+Laptop
+
+Tablet
+
+Mobile
+
+Sidebar becomes Drawer
+
+--------------------------------------------------
+
+JAVASCRIPT
+
+Organize code into modules
+
+Navigation
+
+Dashboard
+
+Users
+
+Influencers
+
+Brands
+
+Tournament
+
+Subscriptions
+
+Reports
+
+Analytics
+
+Settings
+
+Notifications
+
+Charts
+
+Storage
+
+Seed
+
+Avoid duplicate variables.
+
+Avoid global pollution.
+
+Use classes when appropriate.
+
+--------------------------------------------------
+
+VALIDATIONS
+
+Validate
+
+Email
+
+Phone
+
+Empty Fields
+
+Duplicate Records
+
+Invalid Status
+
+Numbers
+
+Prize Pool
+
+Revenue
+
+Dates
+
+Website URL
+
+--------------------------------------------------
+
+ERROR HANDLING
+
+Use try catch
+
+Gracefully handle missing LocalStorage
+
+Gracefully handle empty collections
+
+--------------------------------------------------
+
+PERFORMANCE
+
+Lazy render tables
+
+Reuse DOM
+
+Avoid unnecessary re-render
+
+--------------------------------------------------
+
+ACCESSIBILITY
+
+Keyboard Navigation
+
+ARIA Labels
+
+High Contrast
+
+Visible Focus
+
+--------------------------------------------------
+
+CODE QUALITY
+
+Professional formatting
+
+Meaningful variable names
+
+Comments
+
+Reusable functions
+
+No duplicated code
+
+No console errors
+
+No warnings
+
+--------------------------------------------------
+
+FINAL OUTPUT
+
+Generate the COMPLETE project.
+
+Create
+
+index.html
+
+style.css
+
+storage.js
+
+seed.js
+
+app.js
+
+The code must be immediately runnable by opening index.html or hosting on GitHub Pages.
+
+Everything must work without modification.
+
+The application should look and behave like a real enterprise esports admin dashboard with production-quality UI and functionality.
