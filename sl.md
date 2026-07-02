@@ -685,6 +685,183 @@ Dashboard
 
 A visual interface displaying analytics, metrics, and performance data. 
 
+
+
+"use strict";
+
+/*=========================================
+    USER VERIFICATION
+=========================================*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializeUserVerification();
+
+});
+
+function initializeUserVerification(){
+
+    initializeSearch();
+
+    initializeFilters();
+
+    initializeApproveButtons();
+
+    initializeRejectButtons();
+
+    initializeRequestButtons();
+
+    initializeCheckboxes();
+
+    initializeAdminNotes();
+
+}
+
+/*=========================================
+    SEARCH
+=========================================*/
+
+function initializeSearch(){
+
+    const search=document.querySelector(".table-search input");
+
+    if(!search) return;
+
+    search.addEventListener("keyup",filterUsers);
+
+}
+
+function filterUsers(){
+
+    const value=document.querySelector(".table-search input")
+        .value
+        .toLowerCase();
+
+    const rows=document.querySelectorAll("tbody tr");
+
+    rows.forEach(row=>{
+
+        const text=row.innerText.toLowerCase();
+
+        row.style.display=text.includes(value)
+            ? ""
+            : "none";
+
+    });
+
+}
+
+/*=========================================
+    FILTERS
+=========================================*/
+
+function initializeFilters(){
+
+    document.querySelectorAll("select")
+
+    .forEach(select=>{
+
+        select.addEventListener("change",()=>{
+
+            showToast(
+
+                "Filter Applied",
+
+                "info"
+
+            );
+
+        });
+
+    });
+
+}
+
+/*=========================================
+    APPROVE
+=========================================*/
+
+function initializeApproveButtons(){
+
+    document
+
+    .querySelectorAll(".approve-btn")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",approveUser);
+
+    });
+
+}
+
+function approveUser(e){
+
+    if(!confirmAction("Approve this user?"))
+
+        return;
+
+    const row=e.target.closest("tr");
+
+    const badge=row.querySelector(".badge");
+
+    badge.innerHTML="Approved";
+
+    badge.className="badge approved";
+
+    e.target.disabled=true;
+
+    showToast(
+
+        "User Approved Successfully",
+
+        "success"
+
+    );
+
+}
+
+/*=========================================
+    REJECT
+=========================================*/
+
+function initializeRejectButtons(){
+
+    document
+
+    .querySelectorAll(".reject-btn")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",rejectUser);
+
+    });
+
+}
+
+function rejectUser(e){
+
+    if(!confirmAction("Reject this user?"))
+
+        return;
+
+    const row=e.target.closest("tr");
+
+    const badge=row.querySelector(".badge");
+
+    badge.innerHTML="Rejected";
+
+    badge.className="badge rejected";
+
+    showToast(
+
+        "User Rejected",
+
+        "error"
+
+    );
+
+}
  
 
  
