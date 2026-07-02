@@ -1,4 +1,22 @@
+const COLLECTIONS = {
 
+    USERS: "users",
+
+    INFLUENCERS: "influencers",
+
+    BRANDS: "brands",
+
+    TOURNAMENTS: "tournaments",
+
+    SUBSCRIPTIONS: "subscriptions",
+
+    SUPPORT_TICKETS: "supportTickets",
+
+    ACTIVITY_LOGS: "activityLogs",
+
+    ANALYTICS: "analytics"
+
+};
 Tracking Prevention blocked access to storage for https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css.
 Admin-Dashboard.html:1 Tracking Prevention blocked access to storage for https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css.
 Admin-Dashboard.html:1 Tracking Prevention blocked access to storage for https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css.
