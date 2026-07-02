@@ -1,0 +1,2709 @@
+/*=========================================
+    GAMEVERSE ADMIN COMMON JS
+=========================================*/
+
+"use strict";
+
+/*=========================================
+    DOM READY
+=========================================*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializeNotifications();
+    initializeSearchInputs();
+    initializeButtons();
+    initializeTooltips();
+
+});
+
+/*=========================================
+    TOAST MESSAGE
+=========================================*/
+
+function showToast(message, type = "success") {
+
+    const toast = document.createElement("div");
+
+    toast.className = `toast ${type}`;
+
+    toast.innerHTML = message;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+
+        toast.classList.add("show");
+
+    }, 100);
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+        setTimeout(() => {
+
+            toast.remove();
+
+        }, 300);
+
+    }, 3000);
+
+}
+
+/*=========================================
+    CONFIRM ACTION
+=========================================*/
+
+function confirmAction(message) {
+
+    return window.confirm(message);
+
+}
+
+/*=========================================
+    EMAIL VALIDATION
+=========================================*/
+
+function isValidEmail(email) {
+
+    const regex =
+
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return regex.test(email);
+
+}
+
+/*=========================================
+    PHONE VALIDATION
+=========================================*/
+
+function isValidPhone(phone) {
+
+    const regex = /^[6-9]\d{9}$/;
+
+    return regex.test(phone);
+
+}
+
+/*=========================================
+    URL VALIDATION
+=========================================*/
+
+function isValidURL(url) {
+
+    try {
+
+        new URL(url);
+
+        return true;
+
+    }
+
+    catch {
+
+        return false;
+
+    }
+
+}
+
+/*=========================================
+    REQUIRED FIELD
+=========================================*/
+
+function isEmpty(value) {
+
+    return value.trim() === "";
+
+}
+
+/*=========================================
+    BUTTON LOADING
+=========================================*/
+
+function buttonLoading(button, loadingText) {
+
+    button.dataset.original = button.innerHTML;
+
+    button.disabled = true;
+
+    button.innerHTML =
+
+        `<i class="ri-loader-4-line ri-spin"></i> ${loadingText}`;
+
+}
+
+function stopButtonLoading(button) {
+
+    button.disabled = false;
+
+    button.innerHTML =
+
+        button.dataset.original;
+
+}
+
+/*=========================================
+    NOTIFICATION BUTTON
+=========================================*/
+
+function initializeNotifications() {
+
+    document
+
+        .querySelectorAll(".notification")
+
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                showToast(
+
+                    "No new notifications",
+
+                    "info"
+
+                );
+
+            });
+
+        });
+
+}
+
+/*=========================================
+    SEARCH INPUT
+=========================================*/
+
+function initializeSearchInputs() {
+
+    document
+
+        .querySelectorAll("input[type='search'], .search-box input")
+
+        .forEach(input => {
+
+            input.addEventListener("keyup", debounce(() => {
+
+                console.log(
+
+                    "Searching:",
+
+                    input.value
+
+                );
+
+            }, 300));
+
+        });
+
+}
+
+/*=========================================
+    BUTTON EFFECT
+=========================================*/
+
+function initializeButtons() {
+
+    document
+
+        .querySelectorAll("button")
+
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                button.style.transform =
+
+                    "scale(.98)";
+
+                setTimeout(() => {
+
+                    button.style.transform = "";
+
+                }, 120);
+
+            });
+
+        });
+
+}
+
+/*=========================================
+    TOOLTIPS
+=========================================*/
+
+function initializeTooltips() {
+
+    document
+
+        .querySelectorAll("[title]")
+
+        .forEach(item => {
+
+            item.style.cursor = "pointer";
+
+        });
+
+}
+
+/*=========================================
+    DEBOUNCE
+=========================================*/
+
+function debounce(callback, delay) {
+
+    let timer;
+
+    return (...args) => {
+
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+
+            callback(...args);
+
+        }, delay);
+
+    };
+
+}
+
+
+
+
+
+
+
+
+
+.toast{
+
+position:fixed;
+
+top:30px;
+
+right:30px;
+
+padding:15px 22px;
+
+background:#1F2937;
+
+color:#fff;
+
+border-left:4px solid #7C3AED;
+
+border-radius:10px;
+
+opacity:0;
+
+transform:translateY(-20px);
+
+transition:.3s;
+
+z-index:9999;
+
+}
+
+.toast.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.toast.success{
+
+border-color:#22C55E;
+
+}
+
+.toast.error{
+
+border-color:#EF4444;
+
+}
+
+.toast.info{
+
+border-color:#06B6D4;
+
+}
+
+
+
+
+
+
+
+"use strict";
+
+/*==================================================
+        GAMEVERSE ADMIN DASHBOARD
+==================================================*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializeDashboard();
+
+});
+
+/*==================================================
+        INITIALIZE
+==================================================*/
+
+function initializeDashboard(){
+
+    initializeSearch();
+
+    initializeDateFilter();
+
+    initializeQuickActions();
+
+    initializeNotifications();
+
+    initializeProfileMenu();
+
+    initializeLogout();
+
+    animateStatistics();
+
+    initializeCards();
+
+    keyboardShortcuts();
+
+}
+
+/*==================================================
+        SEARCH
+==================================================*/
+
+function initializeSearch(){
+
+    const search=document.querySelector(".search-box input");
+
+    if(!search) return;
+
+    search.addEventListener("keyup",function(){
+
+        const value=this.value.toLowerCase().trim();
+
+        console.log("Searching :",value);
+
+    });
+
+}
+
+/*==================================================
+        DATE FILTER
+==================================================*/
+
+function initializeDateFilter(){
+
+    const filter=document.querySelector(".date-filter select");
+
+    if(!filter) return;
+
+    filter.addEventListener("change",()=>{
+
+        showToast(
+
+            "Dashboard updated : "+filter.value,
+
+            "info"
+
+        );
+
+    });
+
+}
+
+/*==================================================
+        QUICK ACTIONS
+==================================================*/
+
+function initializeQuickActions(){
+
+    const buttons=document.querySelectorAll(".quick-btn");
+
+    buttons.forEach(button=>{
+
+        button.addEventListener("click",()=>{
+
+            const text=button.innerText.trim();
+
+            switch(text){
+
+                case "Verify Users":
+
+                    location.href="Admin-User-Verification.html";
+
+                    break;
+
+                case "Verify Influencers":
+
+                    location.href="Admin-Influencer-Verification.html";
+
+                    break;
+
+                case "Verify Brands":
+
+                    location.href="Admin-Brand-Verification.html";
+
+                    break;
+
+                case "Manage Tournaments":
+
+                    location.href="Admin-Tournament.html";
+
+                    break;
+
+                case "Manage Subscriptions":
+
+                    location.href="Admin-subcriptions.html";
+
+                    break;
+
+                case "Generate Report":
+
+                    location.href="Admin-Report.html";
+
+                    break;
+
+            }
+
+        });
+
+    });
+
+}
+
+/*==================================================
+        NOTIFICATION
+==================================================*/
+
+function initializeNotifications(){
+
+    document.querySelectorAll(".notification")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",()=>{
+
+            showToast(
+
+                "No new notifications",
+
+                "info"
+
+            );
+
+        });
+
+    });
+
+}
+
+/*==================================================
+        PROFILE MENU
+==================================================*/
+
+function initializeProfileMenu(){
+
+    const profile=document.querySelector(".admin-profile");
+
+    if(!profile) return;
+
+    profile.addEventListener("click",()=>{
+
+        showToast(
+
+            "Profile Menu",
+
+            "success"
+
+        );
+
+    });
+
+}
+
+/*==================================================
+        LOGOUT
+==================================================*/
+
+function initializeLogout(){
+
+    const logout=document.querySelectorAll(".menu a");
+
+    logout.forEach(item=>{
+
+        if(item.innerText.includes("Logout")){
+
+            item.addEventListener("click",(e)=>{
+
+                e.preventDefault();
+
+                if(confirm("Are you sure you want to logout?")){
+
+                    showToast(
+
+                        "Logged out successfully",
+
+                        "success"
+
+                    );
+
+                    setTimeout(()=>{
+
+                        window.location="login.html";
+
+                    },1000);
+
+                }
+
+            });
+
+        }
+
+    });
+
+}
+
+/*==================================================
+        CARD ANIMATION
+==================================================*/
+
+function initializeCards(){
+
+    document.querySelectorAll(".stat-card")
+
+    .forEach(card=>{
+
+        card.addEventListener("mouseenter",()=>{
+
+            card.style.transform="translateY(-6px)";
+
+        });
+
+        card.addEventListener("mouseleave",()=>{
+
+            card.style.transform="";
+
+        });
+
+    });
+
+}
+
+/*==================================================
+        COUNTER ANIMATION
+==================================================*/
+
+function animateStatistics(){
+
+    document.querySelectorAll(".stat-card h2")
+
+    .forEach(counter=>{
+
+        const target=parseInt(
+
+            counter.innerText.replace(/[^0-9]/g,"")
+
+        );
+
+        if(isNaN(target)) return;
+
+        let value=0;
+
+        const speed=Math.ceil(target/80);
+
+        const interval=setInterval(()=>{
+
+            value+=speed;
+
+            if(value>=target){
+
+                value=target;
+
+                clearInterval(interval);
+
+            }
+
+            counter.innerText=value.toLocaleString();
+
+        },20);
+
+    });
+
+}
+
+/*==================================================
+        KEYBOARD SHORTCUTS
+==================================================*/
+
+function keyboardShortcuts(){
+
+    document.addEventListener("keydown",(e)=>{
+
+        if(e.ctrlKey && e.key==="f"){
+
+            e.preventDefault();
+
+            document.querySelector(".search-box input").focus();
+
+        }
+
+        if(e.key==="Escape"){
+
+            document.activeElement.blur();
+
+        }
+
+    });
+
+}
+
+/*==================================================
+        EXPORT
+==================================================*/
+
+function exportDashboard(){
+
+    showToast(
+
+        "Export feature coming soon",
+
+        "info"
+
+    );
+
+}
+
+
+
+
+
+
+/*=========================================
+    REQUEST CHANGES
+=========================================*/
+
+function initializeRequestButtons(){
+
+    document
+
+    .querySelectorAll(".request-btn")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",requestChanges);
+
+    });
+
+}
+
+function requestChanges(e){
+
+    const notes=document.querySelector("textarea");
+
+    if(notes && notes.value.trim().length<10){
+
+        showToast(
+
+            "Please enter at least 10 characters in Admin Notes.",
+
+            "error"
+
+        );
+
+        notes.focus();
+
+        return;
+
+    }
+
+    if(!confirmAction("Request changes for this user?"))
+
+        return;
+
+    const row=e.target.closest("tr");
+
+    const badge=row.querySelector(".badge");
+
+    badge.innerHTML="Changes Requested";
+
+    badge.className="badge pending";
+
+    showToast(
+
+        "Change request sent successfully.",
+
+        "success"
+
+    );
+
+}
+
+/*=========================================
+    SELECT ALL
+=========================================*/
+
+function initializeCheckboxes(){
+
+    const selectAll=document.querySelector("thead input[type='checkbox']");
+
+    const checkboxes=document.querySelectorAll("tbody input[type='checkbox']");
+
+    if(!selectAll) return;
+
+    selectAll.addEventListener("change",()=>{
+
+        checkboxes.forEach(box=>{
+
+            box.checked=selectAll.checked;
+
+            highlightRow(box);
+
+        });
+
+    });
+
+    checkboxes.forEach(box=>{
+
+        box.addEventListener("change",()=>{
+
+            highlightRow(box);
+
+            updateSelectAll();
+
+        });
+
+    });
+
+}
+
+function highlightRow(box){
+
+    const row=box.closest("tr");
+
+    if(!row) return;
+
+    row.classList.toggle("selected-row",box.checked);
+
+}
+
+function updateSelectAll(){
+
+    const selectAll=document.querySelector("thead input[type='checkbox']");
+
+    const checkboxes=document.querySelectorAll("tbody input[type='checkbox']");
+
+    if(!selectAll) return;
+
+    const checked=document.querySelectorAll("tbody input[type='checkbox']:checked");
+
+    selectAll.checked=checked.length===checkboxes.length;
+
+}
+
+/*=========================================
+    BULK APPROVE
+=========================================*/
+
+function bulkApprove(){
+
+    const selected=document.querySelectorAll("tbody input[type='checkbox']:checked");
+
+    if(selected.length===0){
+
+        showToast(
+
+            "Please select at least one user.",
+
+            "error"
+
+        );
+
+        return;
+
+    }
+
+    if(!confirmAction(`Approve ${selected.length} selected users?`))
+
+        return;
+
+    selected.forEach(box=>{
+
+        const row=box.closest("tr");
+
+        const badge=row.querySelector(".badge");
+
+        badge.innerHTML="Approved";
+
+        badge.className="badge approved";
+
+    });
+
+    showToast(
+
+        `${selected.length} users approved.`,
+
+        "success"
+
+    );
+
+}
+
+/*=========================================
+    BULK REJECT
+=========================================*/
+
+function bulkReject(){
+
+    const selected=document.querySelectorAll("tbody input[type='checkbox']:checked");
+
+    if(selected.length===0){
+
+        showToast(
+
+            "Please select at least one user.",
+
+            "error"
+
+        );
+
+        return;
+
+    }
+
+    if(!confirmAction(`Reject ${selected.length} selected users?`))
+
+        return;
+
+    selected.forEach(box=>{
+
+        const row=box.closest("tr");
+
+        const badge=row.querySelector(".badge");
+
+        badge.innerHTML="Rejected";
+
+        badge.className="badge rejected";
+
+    });
+
+    showToast(
+
+        `${selected.length} users rejected.`,
+
+        "success"
+
+    );
+
+}
+
+/*=========================================
+    ADMIN NOTES
+=========================================*/
+
+function initializeAdminNotes(){
+
+    const notes=document.querySelector("textarea");
+
+    if(!notes) return;
+
+    notes.addEventListener("input",()=>{
+
+        if(notes.value.length>500){
+
+            notes.value=notes.value.substring(0,500);
+
+            showToast(
+
+                "Maximum 500 characters allowed.",
+
+                "error"
+
+            );
+
+        }
+
+    });
+
+}
+
+/*=========================================
+    PREVENT DOUBLE ACTION
+=========================================*/
+
+function disableActionButtons(row){
+
+    row.querySelectorAll(".approve-btn,.reject-btn,.request-btn")
+
+    .forEach(button=>{
+
+        button.disabled=true;
+
+        button.style.opacity=".6";
+
+        button.style.cursor="not-allowed";
+
+    });
+
+}
+/*=========================================
+    REQUEST CHANGES
+=========================================*/
+
+function initializeRequestButtons(){
+
+    document
+
+    .querySelectorAll(".request-btn")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",requestChanges);
+
+    });
+
+}
+
+function requestChanges(e){
+
+    const notes=document.querySelector("textarea");
+
+    if(notes && notes.value.trim().length<10){
+
+        showToast(
+
+            "Please enter at least 10 characters in Admin Notes.",
+
+            "error"
+
+        );
+
+        notes.focus();
+
+        return;
+
+    }
+
+    if(!confirmAction("Request changes for this user?"))
+
+        return;
+
+    const row=e.target.closest("tr");
+
+    const badge=row.querySelector(".badge");
+
+    badge.innerHTML="Changes Requested";
+
+    badge.className="badge pending";
+
+    showToast(
+
+        "Change request sent successfully.",
+
+        "success"
+
+    );
+
+}
+
+/*=========================================
+    SELECT ALL
+=========================================*/
+
+function initializeCheckboxes(){
+
+    const selectAll=document.querySelector("thead input[type='checkbox']");
+
+    const checkboxes=document.querySelectorAll("tbody input[type='checkbox']");
+
+    if(!selectAll) return;
+
+    selectAll.addEventListener("change",()=>{
+
+        checkboxes.forEach(box=>{
+
+            box.checked=selectAll.checked;
+
+            highlightRow(box);
+
+        });
+
+    });
+
+    checkboxes.forEach(box=>{
+
+        box.addEventListener("change",()=>{
+
+            highlightRow(box);
+
+            updateSelectAll();
+
+        });
+
+    });
+
+}
+
+function highlightRow(box){
+
+    const row=box.closest("tr");
+
+    if(!row) return;
+
+    row.classList.toggle("selected-row",box.checked);
+
+}
+
+function updateSelectAll(){
+
+    const selectAll=document.querySelector("thead input[type='checkbox']");
+
+    const checkboxes=document.querySelectorAll("tbody input[type='checkbox']");
+
+    if(!selectAll) return;
+
+    const checked=document.querySelectorAll("tbody input[type='checkbox']:checked");
+
+    selectAll.checked=checked.length===checkboxes.length;
+
+}
+
+/*=========================================
+    BULK APPROVE
+=========================================*/
+
+function bulkApprove(){
+
+    const selected=document.querySelectorAll("tbody input[type='checkbox']:checked");
+
+    if(selected.length===0){
+
+        showToast(
+
+            "Please select at least one user.",
+
+            "error"
+
+        );
+
+        return;
+
+    }
+
+    if(!confirmAction(`Approve ${selected.length} selected users?`))
+
+        return;
+
+    selected.forEach(box=>{
+
+        const row=box.closest("tr");
+
+        const badge=row.querySelector(".badge");
+
+        badge.innerHTML="Approved";
+
+        badge.className="badge approved";
+
+    });
+
+    showToast(
+
+        `${selected.length} users approved.`,
+
+        "success"
+
+    );
+
+}
+
+/*=========================================
+    BULK REJECT
+=========================================*/
+
+function bulkReject(){
+
+    const selected=document.querySelectorAll("tbody input[type='checkbox']:checked");
+
+    if(selected.length===0){
+
+        showToast(
+
+            "Please select at least one user.",
+
+            "error"
+
+        );
+
+        return;
+
+    }
+
+    if(!confirmAction(`Reject ${selected.length} selected users?`))
+
+        return;
+
+    selected.forEach(box=>{
+
+        const row=box.closest("tr");
+
+        const badge=row.querySelector(".badge");
+
+        badge.innerHTML="Rejected";
+
+        badge.className="badge rejected";
+
+    });
+
+    showToast(
+
+        `${selected.length} users rejected.`,
+
+        "success"
+
+    );
+
+}
+
+/*=========================================
+    ADMIN NOTES
+=========================================*/
+
+function initializeAdminNotes(){
+
+    const notes=document.querySelector("textarea");
+
+    if(!notes) return;
+
+    notes.addEventListener("input",()=>{
+
+        if(notes.value.length>500){
+
+            notes.value=notes.value.substring(0,500);
+
+            showToast(
+
+                "Maximum 500 characters allowed.",
+
+                "error"
+
+            );
+
+        }
+
+    });
+
+}
+
+/*=========================================
+    PREVENT DOUBLE ACTION
+=========================================*/
+
+function disableActionButtons(row){
+
+    row.querySelectorAll(".approve-btn,.reject-btn,.request-btn")
+
+    .forEach(button=>{
+
+        button.disabled=true;
+
+        button.style.opacity=".6";
+
+        button.style.cursor="not-allowed";
+
+    });
+
+}
+/*=========================================
+    PAGINATION
+=========================================*/
+
+let currentPage = 1;
+const rowsPerPage = 10;
+
+function initializePagination(){
+
+    const rows = document.querySelectorAll("tbody tr");
+
+    if(rows.length === 0) return;
+
+    showPage(currentPage);
+
+}
+
+function showPage(page){
+
+    const rows = document.querySelectorAll("tbody tr");
+
+    const start = (page - 1) * rowsPerPage;
+
+    const end = start + rowsPerPage;
+
+    rows.forEach((row,index)=>{
+
+        row.style.display =
+
+            index >= start && index < end
+
+            ? ""
+
+            : "none";
+
+    });
+
+}
+
+/*=========================================
+    UPDATE STATISTICS
+=========================================*/
+
+function updateStatistics(){
+
+    const pending = document.querySelectorAll(".badge.pending").length;
+
+    const approved = document.querySelectorAll(".badge.approved").length;
+
+    const rejected = document.querySelectorAll(".badge.rejected").length;
+
+    const cards = document.querySelectorAll(".stat-card h2");
+
+    if(cards.length < 4) return;
+
+    cards[1].innerHTML = pending;
+
+    cards[2].innerHTML = approved;
+
+    cards[3].innerHTML = rejected;
+
+}
+
+/*=========================================
+    VIEW DETAILS
+=========================================*/
+
+function initializeViewButtons(){
+
+    document
+
+    .querySelectorAll(".secondary-btn")
+
+    .forEach(button=>{
+
+        if(button.innerText.trim() !== "View") return;
+
+        button.addEventListener("click",()=>{
+
+            const row = button.closest("tr");
+
+            populateDetails(row);
+
+        });
+
+    });
+
+}
+
+function populateDetails(row){
+
+    const cells = row.querySelectorAll("td");
+
+    if(cells.length < 6) return;
+
+    const name = row.querySelector("h4")?.innerText || "";
+
+    const email = row.querySelector("span")?.innerText || "";
+
+    const profileName = document.querySelector(".profile-card h2");
+
+    const profileEmail = document.querySelector(".profile-card p");
+
+    if(profileName) profileName.innerHTML = name;
+
+    if(profileEmail) profileEmail.innerHTML = email;
+
+}
+
+/*=========================================
+    EXPORT SELECTED USERS
+=========================================*/
+
+function exportSelectedUsers(){
+
+    const selected =
+
+    document.querySelectorAll(
+
+        "tbody input[type='checkbox']:checked"
+
+    );
+
+    if(selected.length===0){
+
+        showToast(
+
+            "No users selected.",
+
+            "error"
+
+        );
+
+        return;
+
+    }
+
+    let csv =
+
+        "Name,Status\n";
+
+    selected.forEach(box=>{
+
+        const row = box.closest("tr");
+
+        const name = row.querySelector("h4").innerText;
+
+        const status = row.querySelector(".badge").innerText;
+
+        csv += `${name},${status}\n`;
+
+    });
+
+    const blob =
+
+        new Blob([csv],{
+
+            type:"text/csv"
+
+        });
+
+    const url =
+
+        URL.createObjectURL(blob);
+
+    const a =
+
+        document.createElement("a");
+
+    a.href = url;
+
+    a.download = "verified-users.csv";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+}
+
+/*=========================================
+    KEYBOARD SHORTCUTS
+=========================================*/
+
+function initializeKeyboard(){
+
+    document.addEventListener("keydown",(e)=>{
+
+        if(e.ctrlKey && e.key==="f"){
+
+            e.preventDefault();
+
+            document
+
+            .querySelector(".table-search input")
+
+            ?.focus();
+
+        }
+
+        if(e.ctrlKey && e.key==="e"){
+
+            e.preventDefault();
+
+            exportSelectedUsers();
+
+        }
+
+        if(e.key==="Escape"){
+
+            document.activeElement.blur();
+
+        }
+
+    });
+
+}
+
+/*=========================================
+    SAFE INITIALIZATION
+=========================================*/
+
+try{
+
+    initializePagination();
+
+    initializeViewButtons();
+
+    initializeKeyboard();
+
+    updateStatistics();
+
+}
+
+catch(error){
+
+    console.error(
+
+        "User Verification Error:",
+
+        error
+
+    );
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+"use strict";
+
+/*==================================================
+        TOURNAMENT MANAGEMENT
+==================================================*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializeTournament();
+
+});
+
+/*==================================================
+        INITIALIZE
+==================================================*/
+
+function initializeTournament(){
+
+    initializeSearch();
+
+    initializeFilters();
+
+    initializeApprove();
+
+    initializeReject();
+
+    initializeEdit();
+
+    initializeDelete();
+
+}
+
+/*==================================================
+        SEARCH
+==================================================*/
+
+function initializeSearch(){
+
+    const search=document.querySelector(".table-search input");
+
+    if(!search) return;
+
+    search.addEventListener("keyup",filterTournament);
+
+}
+
+function filterTournament(){
+
+    const value=document
+        .querySelector(".table-search input")
+        .value
+        .toLowerCase();
+
+    const rows=document.querySelectorAll("tbody tr");
+
+    rows.forEach(row=>{
+
+        const text=row.innerText.toLowerCase();
+
+        row.style.display=text.includes(value)
+            ? ""
+            : "none";
+
+    });
+
+}
+
+/*==================================================
+        FILTERS
+==================================================*/
+
+function initializeFilters(){
+
+    document.querySelectorAll("select")
+
+    .forEach(select=>{
+
+        select.addEventListener("change",()=>{
+
+            showToast(
+
+                "Tournament Filter Applied",
+
+                "info"
+
+            );
+
+        });
+
+    });
+
+}
+
+/*==================================================
+        DATE VALIDATION
+==================================================*/
+
+function validateTournamentDates(start,end){
+
+    if(!start || !end)
+
+        return false;
+
+    const startDate=new Date(start);
+
+    const endDate=new Date(end);
+
+    if(endDate<startDate){
+
+        showToast(
+
+            "End date cannot be before Start date.",
+
+            "error"
+
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/*==================================================
+        PRIZE POOL VALIDATION
+==================================================*/
+
+function validatePrizePool(value){
+
+    if(isNaN(value) || value<0){
+
+        showToast(
+
+            "Invalid Prize Pool.",
+
+            "error"
+
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/*==================================================
+        MAX TEAM VALIDATION
+==================================================*/
+
+function validateTeams(value){
+
+    if(value<2){
+
+        showToast(
+
+            "Minimum 2 teams required.",
+
+            "error"
+
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/*==================================================
+        APPROVE
+==================================================*/
+
+function initializeApprove(){
+
+    document
+
+    .querySelectorAll(".approve-btn")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",approveTournament);
+
+    });
+
+}
+
+function approveTournament(e){
+
+    if(!confirmAction(
+
+        "Approve this tournament?"
+
+    )) return;
+
+    const row=e.target.closest("tr");
+
+    const badge=row.querySelector(".badge");
+
+    badge.innerHTML="Approved";
+
+    badge.className="badge approved";
+
+    disableTournamentButtons(row);
+
+    updateTournamentStats();
+
+    showToast(
+
+        "Tournament Approved",
+
+        "success"
+
+    );
+
+}
+
+/*==================================================
+        REJECT
+==================================================*/
+
+function initializeReject(){
+
+    document
+
+    .querySelectorAll(".reject-btn")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",rejectTournament);
+
+    });
+
+}
+
+function rejectTournament(e){
+
+    if(!confirmAction(
+
+        "Reject this tournament?"
+
+    )) return;
+
+    const row=e.target.closest("tr");
+
+    const badge=row.querySelector(".badge");
+
+    badge.innerHTML="Rejected";
+
+    badge.className="badge rejected";
+
+    disableTournamentButtons(row);
+
+    updateTournamentStats();
+
+    showToast(
+
+        "Tournament Rejected",
+
+        "error"
+
+    );
+
+}
+/*==================================================
+        EDIT TOURNAMENT
+==================================================*/
+
+function initializeEdit(){
+
+    document
+
+    .querySelectorAll(".warning-btn")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",editTournament);
+
+    });
+
+}
+
+function editTournament(e){
+
+    const row=e.target.closest("tr");
+
+    if(!row) return;
+
+    showToast(
+
+        "Tournament loaded for editing.",
+
+        "info"
+
+    );
+
+    populateTournamentDetails(row);
+
+}
+
+/*==================================================
+        DELETE TOURNAMENT
+==================================================*/
+
+function initializeDelete(){
+
+    document
+
+    .querySelectorAll(".delete-btn")
+
+    .forEach(button=>{
+
+        button.addEventListener("click",deleteTournament);
+
+    });
+
+}
+
+function deleteTournament(e){
+
+    if(!confirmAction(
+
+        "Delete this tournament permanently?"
+
+    )) return;
+
+    const row=e.target.closest("tr");
+
+    if(row){
+
+        row.remove();
+
+    }
+
+    updateTournamentStats();
+
+    showToast(
+
+        "Tournament deleted successfully.",
+
+        "success"
+
+    );
+
+}
+
+/*==================================================
+        DETAILS PANEL
+==================================================*/
+
+function populateTournamentDetails(row){
+
+    const cells=row.querySelectorAll("td");
+
+    if(cells.length<8) return;
+
+    const tournament=cells[1].innerText;
+
+    const game=cells[2].innerText;
+
+    const organizer=cells[3].innerText;
+
+    const start=cells[4].innerText;
+
+    const end=cells[5].innerText;
+
+    const status=cells[6].innerText;
+
+    updateDetail(
+
+        ".detail-name",
+
+        tournament
+
+    );
+
+    updateDetail(
+
+        ".detail-game",
+
+        game
+
+    );
+
+    updateDetail(
+
+        ".detail-organizer",
+
+        organizer
+
+    );
+
+    updateDetail(
+
+        ".detail-start",
+
+        start
+
+    );
+
+    updateDetail(
+
+        ".detail-end",
+
+        end
+
+    );
+
+    updateDetail(
+
+        ".detail-status",
+
+        status
+
+    );
+
+}
+
+function updateDetail(selector,value){
+
+    const element=document.querySelector(selector);
+
+    if(element){
+
+        element.innerHTML=value;
+
+    }
+
+}
+
+/*==================================================
+        BUTTON LOCK
+==================================================*/
+
+function disableTournamentButtons(row){
+
+    row
+
+    .querySelectorAll(
+
+        ".approve-btn,.reject-btn,.warning-btn"
+
+    )
+
+    .forEach(button=>{
+
+        button.disabled=true;
+
+        button.style.opacity=".6";
+
+        button.style.cursor="not-allowed";
+
+    });
+
+}
+
+/*==================================================
+        ADMIN NOTES
+==================================================*/
+
+function initializeAdminNotes(){
+
+    const notes=document.querySelector("textarea");
+
+    if(!notes) return;
+
+    notes.addEventListener("input",()=>{
+
+        if(notes.value.length>500){
+
+            notes.value=notes.value.substring(0,500);
+
+        }
+
+        const counter=document.querySelector(".note-count");
+
+        if(counter){
+
+            counter.innerHTML=
+
+                `${notes.value.length}/500`;
+
+        }
+
+    });
+
+}
+
+/*==================================================
+        ROW HIGHLIGHT
+==================================================*/
+
+function initializeRowHighlight(){
+
+    document
+
+    .querySelectorAll("tbody tr")
+
+    .forEach(row=>{
+
+        row.addEventListener("click",()=>{
+
+            document
+
+            .querySelectorAll("tbody tr")
+
+            .forEach(r=>{
+
+                r.classList.remove(
+
+                    "active-row"
+
+                );
+
+            });
+
+            row.classList.add(
+
+                "active-row"
+
+            );
+
+            populateTournamentDetails(row);
+
+        });
+
+    });
+
+}
+
+/*==================================================
+        UPDATE STATISTICS
+==================================================*/
+
+function updateTournamentStats(){
+
+    const approved=
+
+    document.querySelectorAll(
+
+        ".badge.approved"
+
+    ).length;
+
+    const rejected=
+
+    document.querySelectorAll(
+
+        ".badge.rejected"
+
+    ).length;
+
+    const pending=
+
+    document.querySelectorAll(
+
+        ".badge.pending"
+
+    ).length;
+
+    const cards=document.querySelectorAll(
+
+        ".stat-card h2"
+
+    );
+
+    if(cards.length>=4){
+
+        cards[1].innerHTML=approved;
+
+        cards[2].innerHTML=pending;
+
+        cards[3].innerHTML=rejected;
+
+    }
+
+}/*==================================================
+        PAGINATION
+==================================================*/
+
+let currentPage = 1;
+
+const rowsPerPage = 10;
+
+function initializePagination(){
+
+    showTournamentPage(currentPage);
+
+}
+
+function showTournamentPage(page){
+
+    const rows = document.querySelectorAll("tbody tr");
+
+    const start = (page - 1) * rowsPerPage;
+
+    const end = start + rowsPerPage;
+
+    rows.forEach((row,index)=>{
+
+        row.style.display =
+
+            (index >= start && index < end)
+
+            ? ""
+
+            : "none";
+
+    });
+
+}
+
+function nextPage(){
+
+    const rows=document.querySelectorAll("tbody tr");
+
+    const totalPages=Math.ceil(rows.length/rowsPerPage);
+
+    if(currentPage<totalPages){
+
+        currentPage++;
+
+        showTournamentPage(currentPage);
+
+    }
+
+}
+
+function previousPage(){
+
+    if(currentPage>1){
+
+        currentPage--;
+
+        showTournamentPage(currentPage);
+
+    }
+
+}
+
+/*==================================================
+        EXPORT CSV
+==================================================*/
+
+function exportTournamentCSV(){
+
+    const rows=document.querySelectorAll("tbody tr");
+
+    let csv="Tournament,Game,Organizer,Status\n";
+
+    rows.forEach(row=>{
+
+        const cols=row.querySelectorAll("td");
+
+        if(cols.length<7) return;
+
+        csv+=`${cols[1].innerText},${cols[2].innerText},${cols[3].innerText},${cols[6].innerText}\n`;
+
+    });
+
+    const blob=new Blob([csv],{
+
+        type:"text/csv"
+
+    });
+
+    const url=URL.createObjectURL(blob);
+
+    const a=document.createElement("a");
+
+    a.href=url;
+
+    a.download="tournaments.csv";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    showToast(
+
+        "Tournament report exported.",
+
+        "success"
+
+    );
+
+}
+
+/*==================================================
+        KEYBOARD SHORTCUTS
+==================================================*/
+
+function initializeKeyboard(){
+
+    document.addEventListener("keydown",(e)=>{
+
+        if(e.ctrlKey && e.key==="f"){
+
+            e.preventDefault();
+
+            document
+
+            .querySelector(".table-search input")
+
+            ?.focus();
+
+        }
+
+        if(e.ctrlKey && e.key==="e"){
+
+            e.preventDefault();
+
+            exportTournamentCSV();
+
+        }
+
+        if(e.key==="Escape"){
+
+            document.activeElement.blur();
+
+        }
+
+    });
+
+}
+
+/*==================================================
+        LOADING EFFECT
+==================================================*/
+
+function simulateLoading(button,text){
+
+    if(!button) return;
+
+    buttonLoading(button,text);
+
+    setTimeout(()=>{
+
+        stopButtonLoading(button);
+
+    },1200);
+
+}
+
+/*==================================================
+        FORM VALIDATION
+==================================================*/
+
+function validateTournamentForm(data){
+
+    if(isEmpty(data.name)){
+
+        showToast(
+
+            "Tournament name is required.",
+
+            "error"
+
+        );
+
+        return false;
+
+    }
+
+    if(!validatePrizePool(data.prize)){
+
+        return false;
+
+    }
+
+    if(!validateTeams(data.teams)){
+
+        return false;
+
+    }
+
+    if(!validateTournamentDates(
+
+        data.start,
+
+        data.end
+
+    )){
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/*==================================================
+        REFRESH DASHBOARD
+==================================================*/
+
+function refreshTournamentDashboard(){
+
+    updateTournamentStats();
+
+    initializePagination();
+
+}
+
+/*==================================================
+        SAFE INITIALIZATION
+==================================================*/
+
+try{
+
+    initializePagination();
+
+    initializeKeyboard();
+
+    refreshTournamentDashboard();
+
+}
+
+catch(error){
+
+    console.error(
+
+        "Tournament JS Error:",
+
+        error
+
+    );
+
+    showToast(
+
+        "Something went wrong.",
+
+        "error"
+
+    );
+
+}
+
+/*==================================================
+        GLOBAL FUNCTIONS
+==================================================*/
+
+window.nextTournamentPage = nextPage;
+
+window.previousTournamentPage = previousPage;
+
+window.exportTournamentCSV = exportTournamentCSV;
+
+
+"use strict";
+
+/*=========================================
+        GAMEVERSE ADMIN UTILITIES
+=========================================*/
+
+/*==========================
+    TOAST
+==========================*/
+
+const AdminUtils = {
+
+toast(message,type="success"){
+
+    if(typeof showToast==="function"){
+
+        showToast(message,type);
+
+        return;
+
+    }
+
+    alert(message);
+
+},
+
+/*==========================
+    CONFIRM
+==========================*/
+
+confirm(message){
+
+    return window.confirm(message);
+
+},
+
+/*==========================
+    SEARCH TABLE
+==========================*/
+
+search(inputSelector,tableSelector){
+
+    const input=document.querySelector(inputSelector);
+
+    if(!input) return;
+
+    input.addEventListener("keyup",()=>{
+
+        const value=input.value.toLowerCase();
+
+        document
+
+        .querySelectorAll(`${tableSelector} tbody tr`)
+
+        .forEach(row=>{
+
+            row.style.display=
+
+            row.innerText.toLowerCase()
+
+            .includes(value)
+
+            ? ""
+
+            : "none";
+
+        });
+
+    });
+
+},
+
+/*==========================
+    PAGINATION
+==========================*/
+
+paginate(tableSelector,page=1,rows=10){
+
+    const allRows=document.querySelectorAll(
+
+        `${tableSelector} tbody tr`
+
+    );
+
+    const start=(page-1)*rows;
+
+    const end=start+rows;
+
+    allRows.forEach((row,index)=>{
+
+        row.style.display=
+
+        index>=start && index<end
+
+        ? ""
+
+        : "none";
+
+    });
+
+},
+
+/*==========================
+    CSV EXPORT
+==========================*/
+
+exportTable(tableSelector,fileName){
+
+    const table=document.querySelector(tableSelector);
+
+    if(!table) return;
+
+    let csv="";
+
+    table.querySelectorAll("tr")
+
+    .forEach(row=>{
+
+        const cols=row.querySelectorAll("th,td");
+
+        let line=[];
+
+        cols.forEach(col=>{
+
+            line.push(
+
+                `"${col.innerText.trim()}"`
+
+            );
+
+        });
+
+        csv+=line.join(",")+"\n";
+
+    });
+
+    const blob=new Blob([csv],{
+
+        type:"text/csv"
+
+    });
+
+    const url=URL.createObjectURL(blob);
+
+    const a=document.createElement("a");
+
+    a.href=url;
+
+    a.download=fileName;
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+},
+
+/*==========================
+    LOADING BUTTON
+==========================*/
+
+loading(button,text="Loading..."){
+
+    button.dataset.text=button.innerHTML;
+
+    button.disabled=true;
+
+    button.innerHTML=
+
+    `<i class="ri-loader-4-line ri-spin"></i> ${text}`;
+
+},
+
+stopLoading(button){
+
+    button.disabled=false;
+
+    button.innerHTML=
+
+    button.dataset.text;
+
+},
+
+/*==========================
+    EMAIL
+==========================*/
+
+email(email){
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    .test(email);
+
+},
+
+/*==========================
+    PHONE
+==========================*/
+
+phone(phone){
+
+    return /^[6-9]\d{9}$/
+
+    .test(phone);
+
+},
+
+/*==========================
+    URL
+==========================*/
+
+url(url){
+
+    try{
+
+        new URL(url);
+
+        return true;
+
+    }
+
+    catch{
+
+        return false;
+
+    }
+
+},
+
+/*==========================
+    REQUIRED
+==========================*/
+
+required(value){
+
+    return value.trim()!== "";
+
+},
+
+/*==========================
+    NUMBER
+==========================*/
+
+number(value){
+
+    return !isNaN(value);
+
+},
+
+/*==========================
+    DATE
+==========================*/
+
+date(start,end){
+
+    return new Date(end)>=new Date(start);
+
+},
+
+/*==========================
+    ROW HIGHLIGHT
+==========================*/
+
+highlight(tableSelector){
+
+    document
+
+    .querySelectorAll(`${tableSelector} tbody tr`)
+
+    .forEach(row=>{
+
+        row.onclick=()=>{
+
+            document
+
+            .querySelectorAll(
+
+                `${tableSelector} tbody tr`
+
+            )
+
+            .forEach(r=>{
+
+                r.classList.remove(
+
+                    "active-row"
+
+                );
+
+            });
+
+            row.classList.add(
+
+                "active-row"
+
+            );
+
+        };
+
+    });
+
+},
+
+/*==========================
+    KEYBOARD
+==========================*/
+
+shortcuts(searchSelector){
+
+    document.addEventListener("keydown",e=>{
+
+        if(e.ctrlKey && e.key==="f"){
+
+            e.preventDefault();
+
+            document
+
+            .querySelector(searchSelector)
+
+            ?.focus();
+
+        }
+
+        if(e.key==="Escape"){
+
+            document.activeElement.blur();
+
+        }
+
+    });
+
+},
+
+/*==========================
+    COUNTER
+==========================*/
+
+counter(selector){
+
+    document.querySelectorAll(selector)
+
+    .forEach(counter=>{
+
+        const target=parseInt(
+
+            counter.innerText.replace(/\D/g,"")
+
+        );
+
+        if(isNaN(target)) return;
+
+        let value=0;
+
+        const speed=Math.ceil(target/80);
+
+        const timer=setInterval(()=>{
+
+            value+=speed;
+
+            if(value>=target){
+
+                value=target;
+
+                clearInterval(timer);
+
+            }
+
+            counter.innerText=value.toLocaleString();
+
+        },20);
+
+    });
+
+}
+
+};
